@@ -6,12 +6,14 @@ import About from "./pages/About";
 import Login from "./pages/Login"; 
 import Navs from "./components/NavBar";
 import Hero from "./components/HeroSection";
+import First_Section from "./components/First_Section";
 
 function App(){
     return (
       <div>
         <Navs />
         <Hero />
+        <First_Section />
       </div>
         
     )

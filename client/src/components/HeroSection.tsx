@@ -1,29 +1,92 @@
 import React from 'react';
 import { Container, Button } from 'react-bootstrap';
-import './HeroSection.css'; // Import the custom styles below
+import './HeroSection.css';
+import Pic1 from './images/pic1.png';
 
 const HeroSection = () => {
   return (
     <section className="hero-section">
-      {/* Animated Background Video */}
-      <video className="hero-bg-video" autoPlay loop muted playsInline>
-        <source src="https://cdn.coverr.co/videos/coverr-cinematic-snowy-mountains-7615/720p.mp4" type="video/mp4" />
-      </video>
+      <div className="light-rays"></div>
+       {/* PARTICLES */}
+<div className="particles">
+  <span style={{ left: '10%', animationDuration: '10s' }}></span>
+  <span style={{ left: '20%', animationDuration: '14s' }}></span>
+  <span style={{ left: '35%', animationDuration: '18s' }}></span>
+  <span style={{ left: '50%', animationDuration: '12s' }}></span>
+  <span style={{ left: '65%', animationDuration: '20s' }}></span>
+  <span style={{ left: '75%', animationDuration: '15s' }}></span>
+  <span style={{ left: '85%', animationDuration: '17s' }}></span>
+</div>
 
-      {/* Dark Overlay for Contrast */}
+      {/* BACKGROUND IMAGE */}
+      <div className="hero-background">
+        <img
+          src={Pic1}
+          alt="Eagles Temple"
+          className="hero-image"
+        />
+      </div>
+
+      {/* DARK OVERLAY */}
       <div className="hero-overlay"></div>
 
-      {/* Foreground Content */}
-      <Container className="hero-content text-center text-white">
-        <h1 className="display-3 fw-bold">Welcome to Eagles Temple</h1><br/>
-        <h2>
-          MT 24:28 "Where the Carcass, there the Eagles Shall Gather".<br/> The carcass is the revealed word of the 
-          hour which is the End-Time message. Join us to learn more.
-        </h2>
-        <Button variant="primary" size="lg" className="mt-3">
-          Get Started
-        </Button>
+      {/* ANIMATED LIGHT EFFECT */}
+      <div className="light-rays"></div>
+
+      {/* FLOATING CAPTIONS */}
+      <div className="floating floating-1">
+        ✨ The Bride is Preparing
+      </div>
+
+      <div className="floating floating-2">
+        🕊️ The Revealed Word of the Hour
+      </div>
+
+      <div className="floating floating-3">
+        🔥 Eagles Gathering Around the Word
+      </div>
+
+      {/* MAIN CONTENT */}
+      <Container className="hero-content text-center">
+
+        <h1 className="hero-title">
+          The End-Time Message
+        </h1>
+
+        <p className="hero-scripture">
+          “Where the carcass is, there will the eagles be gathered together.”
+          <br />
+          — Matthew 24:28
+        </p>
+
+        <p className="hero-description">
+          Experience the revealed Word of this hour.
+          Join believers seeking truth, faith, and spiritual awakening
+          through the End-Time Message.
+        </p>
+
+        <div className="hero-buttons">
+
+          <Button
+            variant="warning"
+            size="lg"
+            className="hero-btn"
+          >
+            Join Us
+          </Button>
+
+          <Button
+            variant="outline-light"
+            size="lg"
+            className="hero-btn-secondary"
+          >
+            Watch Sermons
+          </Button>
+
+        </div>
+
       </Container>
+
     </section>
   );
 };
