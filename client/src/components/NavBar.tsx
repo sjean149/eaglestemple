@@ -7,7 +7,7 @@ function Navs() {
   return (
     <Navbar
       expand="lg"
-      bg="dark"
+      bg="darkblue"
       data-bs-theme="dark"
       style={{
         backgroundColor: "darkblue",
@@ -22,7 +22,6 @@ function Navs() {
             fontSize: "2rem",
             fontWeight: "bold",
             color: "white",
-            backgroundColor: "darkblue",
 
           }}
         >
