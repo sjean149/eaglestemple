@@ -1,0 +1,169 @@
+/* ==========================================================================
+   CINEMATIC LUXURY FOOTER STYLING
+   ========================================================================== */
+.luxury-footer {
+  /* Slightly shifted background color to break from the main body dark theme */
+  background: linear-gradient(180deg, #090d16 0%, #05080e 100%);
+  position: relative;
+  width: 100%;
+  padding-top: 80px;
+  padding-bottom: 40px;
+  overflow: hidden;
+  /* Gold border highlight separation line */
+  border-top: 1px solid rgba(251, 191, 36, 0.15);
+  box-shadow: inset 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Gold Gradient Header Accent Strip */
+.footer-gold-gradient-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(251, 191, 36, 0) 0%, rgba(251, 191, 36, 0.8) 50%, rgba(251, 191, 36, 0) 100%);
+}
+
+.footer-content-wrap {
+  position: relative;
+  z-index: 5;
+}
+
+/* Brand Typography Layout */
+.footer-logo-title {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+.footer-brand-tagline {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #94a3b8; 
+  margin-bottom: 25px;
+  max-width: 320px;
+}
+
+/* Headings Matrix */
+.footer-heading {
+  font-family: 'Cinzel', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 1.5px;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+/* Social Icon Round Anchor Links */
+.footer-social-icons .social-icon-link {
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #cbd5e1;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+.footer-social-icons .social-icon-link stroke {
+  transition: stroke 0.3s ease;
+}
+
+.footer-social-icons .social-icon-link svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Social Media Interactions */
+.footer-social-icons .social-icon-link:hover {
+  color: #030712;
+  background-color: #fbbf24;
+  border-color: #fbbf24;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(251, 191, 36, 0.35);
+}
+
+/* Contact List Matrix */
+.footer-contact-list li {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.98rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
+.contact-icon {
+  width: 18px;
+  height: 18px;
+  color: #fbbf24; 
+  flex-shrink: 0;
+}
+
+.contact-link {
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+  color: #fbbf24;
+}
+
+/* Text Links / Sitemap List Layout */
+.footer-links-list li {
+  margin-bottom: 12px;
+}
+
+.footer-links-list a {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.98rem;
+  color: #94a3b8;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.footer-links-list a:hover {
+  color: #fbbf24;
+  padding-left: 6px; 
+}
+
+/* Bottom Infrastructure Rules */
+.footer-divider {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin: 50px 0 30px 0;
+}
+
+.copyright-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.88rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.gold-text {
+  color: #fbbf24;
+  font-weight: 600;
+}
+
+.developer-signature {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  color: #475569;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+@media (max-width: 991.98px) {
+  .footer-brand-column .footer-brand-tagline {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

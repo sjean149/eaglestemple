@@ -1,78 +1,58 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Button } from 'react-bootstrap';
 import './HeroSection.css';
-import Pic1 from './images/pic1.png';
 
-const HeroSection = () => {
-  const [isLoaded, setIsLoaded] = useState(false);
+// Securely target the pastor's original background image
+import pastorBg from './images/pic1.png'; 
 
-  // Triggers the text animations reliably immediately after component mounting
+const HeroSection: React.FC = () => {
+  const [animate, setAnimate] = useState(false);
+
+  // Fires the text-reveal cascading animations upon layout mount
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoaded(true), 100);
-    return () => clearTimeout(timer);
+    setAnimate(true);
   }, []);
 
   return (
-    <section className="hero-section">
-      <div className="light-rays"></div>
+    <section className="premium-hero-viewport">
+      {/* PASTOR BACKGROUND IMAGE OVERALL LAYER */}
+      <div 
+        className="hero-media-background" 
+        style={{ backgroundImage: `url(${pastorBg})` }}
+      ></div>
       
-      {/* PARTICLES */}
-      <div className="particles">
-        <span style={{ left: '10%', animationDuration: '10s' }}></span>
-        <span style={{ left: '20%', animationDuration: '14s' }}></span>
-        <span style={{ left: '35%', animationDuration: '18s' }}></span>
-        <span style={{ left: '50%', animationDuration: '12s' }}></span>
-        <span style={{ left: '65%', animationDuration: '20s' }}></span>
-        <span style={{ left: '75%', animationDuration: '15s' }}></span>
-        <span style={{ left: '85%', animationDuration: '17s' }}></span>
-      </div>
+      {/* High-Contrast Tint Overlays for Absolute Text Legibility */}
+      <div className="hero-cinematic-overlay"></div>
 
-      {/* BACKGROUND IMAGE (Pastor pic1.png) */}
-      <div className="hero-background">
-        <img
-          src={Pic1}
-          alt="Eagles Temple"
-          className="hero-image"
-        />
-      </div>
+      {/* CENTRALIZED ANIMATED SCRIPTURE TEXT */}
+      <Container className="hero-content-alignment-wrapper text-center">
+        <div className="hero-text-stack">
+          
+          {/* Item 1: Animated Quote Title */}
+          <h1 className={`hero-scripture-quote ${animate ? 'fade-in-element-1' : ''}`}>
+            "Where the carcass is, there will the eagles be gathered together."
+          </h1>
 
-      {/* DARK OVERLAY */}
-      <div className="hero-overlay"></div>
+          {/* Item 2: Animated Scripture Citation */}
+          <p className={`hero-scripture-citation ${animate ? 'fade-in-element-2' : ''}`}>
+            — Matthew 24:28
+          </p>
 
-      {/* ANIMATED LIGHT EFFECT */}
-      <div className="light-rays"></div>
+          {/* Item 3: Animated Gold Sparkline Divider */}
+          <div className={`hero-animated-divider ${animate ? 'fade-in-element-3' : ''}`}>
+            <span className="hero-gold-core-sparkle"></span>
+          </div>
 
-      {/* FLOATING CAPTIONS */}
-      <div className="floating floating-1">✨</div>
-      <div className="floating floating-2">🕊️</div>
-      <div className="floating floating-3">🔥</div>
+          {/* Item 4: Action Buttons Matrix */}
+          <div className={`hero-button-row d-flex justify-content-center gap-3 mt-4 ${animate ? 'fade-in-element-4' : ''}`}>
+            <Button className="hero-btn-primary px-4 py-2 fw-semibold">
+              Join Us
+            </Button>
+            <Button className="hero-btn-secondary px-4 py-2 fw-semibold">
+              Watch Sermons
+            </Button>
+          </div>
 
-      {/* MAIN CONTENT */}
-      <Container className="hero-content text-center">
-        {/* Dynamic toggle classes ensure visibility and fire transitions sequentially */}
-        <h1 className={`hero-title reveal-item ${isLoaded ? 'reveal-1' : ''}`}>
-          The End-Time Message
-        </h1>
-
-        <p className={`hero-scripture reveal-item ${isLoaded ? 'reveal-2' : ''}`}>
-          “Where the carcass is, there will the eagles be gathered together.”
-          <br />
-          <span className="scripture-reference">— Matthew 24:28</span>
-        </p>
-
-        <p className={`hero-description reveal-item ${isLoaded ? 'reveal-3' : ''}`}>
-          Experience the revealed Word of this hour.
-          Join believers seeking truth, faith, and spiritual awakening
-          through the End-Time Message.
-        </p>
-
-        <div className={`hero-buttons reveal-item ${isLoaded ? 'reveal-4' : ''}`}>
-          <Button variant="warning" size="lg" className="hero-btn">
-            Join Us
-          </Button>
-          <Button variant="outline-light" size="lg" className="hero-btn-secondary">
-            Watch Sermons
-          </Button>
         </div>
       </Container>
     </section>
