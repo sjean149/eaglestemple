@@ -4,7 +4,7 @@ import './SermonSeries.css';
 
 // Import graphics securely
 import eagleBg from './images/bald-eagle.png'; // Top Banner Image
-import bg1 from './images/eaglestemple1.jpg';   // For Sunday School
+import bg1 from './images/eaglestemple4.png';   // For Sunday School
 import bg2 from './images/eaglestemple2.png';   // For Bible Study
 import bg3 from './images/eaglestemple3.png';   // For Our Doctrines
 

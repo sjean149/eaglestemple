@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="luxury-footer">
+    <footer className="luxury-footer" style={{backgroundColor:'#6495ED'}}>
       {/* Decorative top border bar */}
       <div className="footer-gold-gradient-bar"></div>
 
