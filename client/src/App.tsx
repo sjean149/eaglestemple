@@ -4,12 +4,12 @@ import HeroSection from './components/HeroSection';
 import First_Section from './components/First_Section';
 import SermonServices from './components/SermonSeries'
 import Footer from './components/Footer';
-//import BackgroundAudioa from './components/BackgroundAudio'; // Import the music player
+import BackgroundAudio from './components/BackgroundAudio'; // Import the music player
 
 function App() {
   return (
     <div className="App">
-    
+      <BackgroundAudio />
       <NavBar />
       <HeroSection />
       <First_Section />
