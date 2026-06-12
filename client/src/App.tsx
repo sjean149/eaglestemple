@@ -1,23 +1,25 @@
-import React from 'react';
-import NavBar from './components/NavBar';
-import HeroSection from './components/HeroSection';
-import First_Section from './components/First_Section';
-import SermonServices from './components/SermonSeries'
-import Footer from './components/Footer';
-import BackgroundAudio from './components/BackgroundAudio'; // Import the music player
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Giving from "./pages/Giving";
+import Sermons from "./pages/Sermons";
+import About from "./pages/About";
+import Login from "./pages/Login"; 
 
-function App() {
-  return (
-    <div className="App">
-      <BackgroundAudio />
-      <NavBar />
-      <HeroSection />
-      <First_Section />
-      <SermonServices />
-      {/* Other sections... */}
-      <Footer />
-    </div>
-  );
+
+function App(){
+    return (
+        <BrowserRouter>
+        <Routes>
+            <Route path="/" element={<Home  /> } />
+            <Route path="/giving" element={<Giving /> } />
+            <Route path="/sermons" element={<Sermons  /> } />
+            <Route path="/about" element={<About  /> } />
+            <Route path="/login" element={<Login /> } />
+            
+
+        </Routes>
+        </BrowserRouter>
+    )
 }
 
 export default App;
