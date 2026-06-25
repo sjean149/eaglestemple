@@ -1,9 +1,10 @@
 import React from 'react';
 import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import logo from './images/logo.jpg';
 
 const NavBar: React.FC = () => {
-  // Common style object for top-level navigation links to ensure consistency
+  // Common style object for top-level navigation links
   const navLinkStyle = {
     color: '#e2e8f0',
     fontFamily: "'Montserrat', sans-serif",
@@ -12,21 +13,25 @@ const NavBar: React.FC = () => {
     letterSpacing: '0.5px',
     padding: '8px 12px',
     transition: 'all 0.3s ease',
+    textDecoration: 'none',
+    display: 'inline-block'
   };
 
-  // Dropdown style adjustments to clear default Bootstrap background weights
-  const dropdownMenuBlockStyle = {
+  // Upgraded Wide Mega Menu Block style
+  const megaMenuBlockStyle = {
     backgroundColor: 'rgba(10, 10, 12, 0.98)',
     backdropFilter: 'blur(16px)',
     WebkitBackdropFilter: 'blur(16px)',
     border: '1px solid rgba(251, 191, 36, 0.2)',
-    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.7)',
-    borderRadius: '6px',
-    padding: '12px 8px',
-    marginTop: '10px'
+    boxShadow: '0 15px 40px rgba(0, 0, 0, 0.8)',
+    borderRadius: '8px',
+    padding: '24px',
+    marginTop: '10px',
+    width: '520px', // Extra wide to support beautiful side-by-side structures cleanly
+    left: '50%',
+    transform: 'translateX(-50%)'
   };
 
-  // Shared function to apply golden hover effects smoothly to the text links
   const handleTextHover = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.currentTarget.style.color = '#fbbf24';
   };
@@ -37,7 +42,7 @@ const NavBar: React.FC = () => {
 
   return (
     <Navbar 
-      expand="xl" /* Upgraded to xl to accommodate advanced dropdown layouts cleanly on tablets */
+      expand="xl" 
       variant="dark" 
       fixed="top"
       className="py-3"
@@ -51,7 +56,12 @@ const NavBar: React.FC = () => {
     >
       <Container fluid="lg">
         {/* Brand Group Layout Vector */}
-        <Navbar.Brand href="#home" className="d-flex align-items-center gap-3" style={{ fontFamily: "'Cinzel', Georgia, serif", color: '#ffffff', fontWeight: 700, fontSize: '1.4rem' }}>
+        <Navbar.Brand 
+          as={Link} 
+          to="/" 
+          className="d-flex align-items-center gap-3" 
+          style={{ fontFamily: "'Cinzel', Georgia, serif", color: '#ffffff', fontWeight: 700, fontSize: '1.4rem', textDecoration: 'none' }}
+        >
           <img 
             src={logo} 
             alt="Eagles Temple Logo" 
@@ -68,9 +78,10 @@ const NavBar: React.FC = () => {
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
           <Nav className="align-items-center gap-3">
             
-            {/* HOME */}
+            {/* HOME LINK */}
             <Nav.Link 
-              href="#home" 
+              as={Link}
+              to="/" 
               style={navLinkStyle}
               onMouseEnter={handleTextHover}
               onMouseLeave={(e) => handleTextLeave(e, '#e2e8f0')}
@@ -79,14 +90,8 @@ const NavBar: React.FC = () => {
             </Nav.Link>
 
             {/* MEDIA & SERMONS DROPDOWN */}
-            <NavDropdown 
-              title="Media" 
-              id="media-dropdown"
-              style={navLinkStyle}
-              className="custom-nav-dropdown"
-              renderMenuOnMount={true}
-            >
-              <div style={dropdownMenuBlockStyle}>
+            <NavDropdown title="Media" id="media-dropdown" style={navLinkStyle} className="custom-nav-dropdown">
+              <div style={{ ...megaMenuBlockStyle, width: '320px', padding: '12px 8px' }}>
                 <NavDropdown.Item href="#sermons" className="d-flex align-items-start gap-3 py-2 px-3 custom-drop-item" style={{ color: '#ffffff', transition: 'all 0.2s' }}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><line x1="12" x12="12" y1="19" y2="22"/></svg>
                   <div>
@@ -105,42 +110,84 @@ const NavBar: React.FC = () => {
               </div>
             </NavDropdown>
 
-            {/* OUR FAITH DROPDOWN */}
-            <NavDropdown 
-              title="Our Faith" 
-              id="faith-dropdown"
-              style={navLinkStyle}
-              className="custom-nav-dropdown"
-            >
-              <div style={dropdownMenuBlockStyle}>
-                <NavDropdown.Item href="#about" className="d-flex align-items-start gap-3 py-2 px-3 custom-drop-item" style={{ color: '#ffffff', transition: 'all 0.2s' }}>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-                  <div>
-                    <div style={{ fontWeight: 600, fontSize: '0.95rem', fontFamily: 'Montserrat' }}>Beliefs & Doctrine</div>
-                    <small style={{ color: '#94a3b8', fontSize: '0.8rem' }}>The absolute truth of the original Word</small>
+            {/* HIGH-STYLE NESTED MEGA MENU FOR OUR FAITH */}
+            <NavDropdown title="Our Faith" id="faith-dropdown" style={navLinkStyle} className="custom-nav-dropdown position-relative">
+              <div style={megaMenuBlockStyle} className="mega-menu-container">
+                <div className="row">
+                  
+                  {/* LEFT COLUMN: MAIN PAGES */}
+                  <div className="col-5 border-end border-secondary border-opacity-25 pe-3">
+                    <div className="menu-section-label">General</div>
+                    
+                    <Link to="/about" className="mega-nav-card mt-2">
+                      <div className="mega-card-icon">🦅</div>
+                      <div>
+                        <div className="mega-card-title">About Us</div>
+                        <div className="mega-card-desc">Our mission, vision, and structural timeline</div>
+                      </div>
+                    </Link>
+
+                    <a href="#leadership" className="mega-nav-card mt-3">
+                      <div className="mega-card-icon">👑</div>
+                      <div>
+                        <div className="mega-card-title">Leadership</div>
+                        <div className="mega-card-desc">Meet the pastors and advocates serving you</div>
+                      </div>
+                    </a>
                   </div>
-                </NavDropdown.Item>
-                
-                <NavDropdown.Item href="#leadership" className="d-flex align-items-start gap-3 py-2 px-3 custom-drop-item" style={{ color: '#ffffff', transition: 'all 0.2s' }}>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                  <div>
-                    <div style={{ fontWeight: 600, fontSize: '0.95rem', fontFamily: 'Montserrat' }}>Our Leadership</div>
-                    <small style={{ color: '#94a3b8', fontSize: '0.8rem' }}>Meet the pastors and advocates serving you</small>
+
+                  {/* RIGHT COLUMN: DEDICATED DOCTRINE SUB-MENU */}
+                  <div className="col-7 ps-4">
+                    <div className="menu-section-label">Doctrine Foundations</div>
+                    <div className="doctrine-links-grid mt-2">
+                      
+                      {/* WATER BAPTISM LINK */}
+                      <Link to="/doctrine/water-baptism" className="doctrine-sub-item active-doc">
+                        <span className="doc-bullet">✦</span> 
+                        <div>
+                          <div className="doc-name">Water Baptism</div>
+                          <small className="doc-meta">Full Immersion Statement</small>
+                        </div>
+                      </Link>
+
+                      {/* ORIGINAL SIN LINK (NOW LIVE & CLICKABLE) */}
+                      <Link to="/doctrine/original-sin" className="doctrine-sub-item active-doc">
+                        <span className="doc-bullet">✦</span>
+                        <div>
+                          <div className="doc-name">The Original Sin</div>
+                          <small className="doc-meta">The Truth Revealed</small>
+                        </div>
+                      </Link>
+
+                      {/* PLACEHOLDERS */}
+                      <div className="doctrine-sub-item disabled-doc">
+                        <span className="doc-bullet">✦</span>
+                        <div>
+                          <div className="doc-name">The Truth about Sabbath</div>
+                          <small className="doc-meta">Coming Soon</small>
+                        </div>
+                      </div>
+
+                      <div className="doctrine-sub-item disabled-doc">
+                        <span className="doc-bullet">✦</span>
+                        <div>
+                          <div className="doc-name">The Seven Messengers</div>
+                          <small className="doc-meta">Coming Soon</small>
+                        </div>
+                      </div>
+
+                    </div>
                   </div>
-                </NavDropdown.Item>
+
+                </div>
               </div>
             </NavDropdown>
 
             {/* MINISTRIES DROPDOWN */}
-            <NavDropdown 
-              title="Ministries" 
-              id="ministries-dropdown"
-              style={navLinkStyle}
-              className="custom-nav-dropdown"
-            >
-              <div style={dropdownMenuBlockStyle}>
+            <NavDropdown title="Ministries" id="ministries-dropdown" style={navLinkStyle} className="custom-nav-dropdown">
+              <div style={{ ...megaMenuBlockStyle, width: '320px', padding: '12px 8px' }}>
                 <NavDropdown.Item href="#children" className="d-flex align-items-start gap-3 py-2 px-3 custom-drop-item" style={{ color: '#ffffff', transition: 'all 0.2s' }}>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" x12="6" y1="2" y2="4"/><line x1="10" x12="10" y1="2" y2="4"/><line x1="14" x12="14" y1="2" y2="4"/></svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
                   <div>
                     <div style={{ fontWeight: 600, fontSize: '0.95rem', fontFamily: 'Montserrat' }}>Youth & Children</div>
                     <small style={{ color: '#94a3b8', fontSize: '0.8rem' }}>Curriculum-based faith foundations</small>
@@ -157,7 +204,7 @@ const NavBar: React.FC = () => {
               </div>
             </NavDropdown>
 
-            {/* HIGH ELEGANCE CTA BUTTON (JOIN US) */}
+            {/* JOIN US CTA BUTTON */}
             <Nav.Link 
               href="#contact" 
               style={{ 
@@ -196,18 +243,158 @@ const NavBar: React.FC = () => {
         </Navbar.Collapse>
       </Container>
 
-      {/* Global CSS Injector to safely force Bootstrap drop-items to change colors beautifully on hover */}
+      {/* Embedded CSS Engine for Stunning Mega Menu Aesthetics */}
       <style>{`
+        /* OBLITERATE THE NATIVE WHITE BACKGROUND CONTAINER DROPDOWN LAYER */
+        .custom-nav-dropdown .dropdown-menu {
+          background-color: transparent !important;
+          background: transparent !important;
+          border: none !important;
+          box-shadow: none !important;
+          padding: 0 !important;
+          margin: 0 !important;
+          min-width: auto !important;
+        }
+
+        /* FORCED BOOTSTRAP OVERRIDES: Removes focus/active link highlighting backgrounds */
+        .custom-nav-dropdown .dropdown-menu .dropdown-item:focus,
+        .custom-nav-dropdown .dropdown-menu .dropdown-item:active,
+        .custom-nav-dropdown .dropdown-menu .dropdown-item:hover,
+        .mega-nav-card:focus,
+        .mega-nav-card:active,
+        .doctrine-sub-item:focus,
+        .doctrine-sub-item:active {
+          background-color: transparent !important;
+          background: transparent !important;
+          color: inherit !important;
+          outline: none !important;
+          box-shadow: none !important;
+        }
+
+        /* Interaction layout controls */
         .custom-nav-dropdown .dropdown-toggle::after {
           color: #fbbf24 !important;
           margin-left: 6px;
           transition: transform 0.3s ease;
         }
+        
         .custom-nav-dropdown:hover .dropdown-toggle::after {
           transform: rotate(180deg);
         }
+
         .custom-drop-item:hover {
           background-color: rgba(251, 191, 36, 0.08) !important;
+          color: #fbbf24 !important;
+        }
+
+        /* Mega menu inner layouts */
+        .menu-section-label {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 0.75rem;
+          text-transform: uppercase;
+          letter-spacing: 1.5px;
+          color: #fbbf24;
+          font-weight: 700;
+          border-bottom: 1px solid rgba(251, 191, 36, 0.15);
+          padding-bottom: 6px;
+          margin-bottom: 12px;
+        }
+
+        .mega-nav-card {
+          display: flex;
+          align-items: flex-start;
+          gap: 12px;
+          padding: 10px;
+          border-radius: 6px;
+          text-decoration: none;
+          transition: all 0.2s ease;
+        }
+        
+        .mega-nav-card:hover {
+          background-color: rgba(251, 191, 36, 0.05) !important;
+        }
+        
+        .mega-card-icon {
+          font-size: 1.2rem;
+          background: rgba(251, 191, 36, 0.1);
+          padding: 4px 8px;
+          border-radius: 4px;
+        }
+        
+        .mega-card-title {
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 600;
+          font-size: 0.95rem;
+          color: #ffffff;
+        }
+        
+        .mega-nav-card:hover .mega-card-title {
+          color: #fbbf24;
+        }
+        
+        .mega-card-desc {
+          font-size: 0.78rem;
+          color: #94a3b8;
+          line-height: 1.3;
+          margin-top: 2px;
+        }
+
+        /* Doctrine list grid styling */
+        .doctrine-links-grid {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+        
+        .doctrine-sub-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 10px;
+          padding: 8px 12px;
+          border-radius: 4px;
+          text-decoration: none;
+          transition: all 0.2s ease;
+        }
+        
+        .active-doc {
+          cursor: pointer;
+        }
+        
+        .active-doc:hover {
+          background: rgba(251, 191, 36, 0.08) !important;
+          transform: translateX(4px);
+        }
+        
+        .doc-bullet {
+          color: rgba(251, 191, 36, 0.4);
+          font-size: 0.8rem;
+          margin-top: 2px;
+        }
+        
+        .active-doc:hover .doc-bullet {
+          color: #fbbf24;
+        }
+        
+        .doc-name {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 0.9rem;
+          font-weight: 500;
+          color: #e2e8f0;
+        }
+        
+        .active-doc:hover .doc-name {
+          color: #fbbf24;
+        }
+        
+        .doc-meta {
+          display: block;
+          font-size: 0.72rem;
+          color: #64748b;
+        }
+        
+        .disabled-doc {
+          opacity: 0.4;
+          cursor: not-allowed;
         }
       `}</style>
     </Navbar>
