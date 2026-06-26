@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap';
 import logo from './images/logo.jpg';
+import Home from '../pages/Home';
 
 const NavBar: React.FC = () => {
   // Common style object for top-level navigation links to ensure consistency
@@ -51,7 +52,7 @@ const NavBar: React.FC = () => {
     >
       <Container fluid="lg">
         {/* Brand Group Layout Vector */}
-        <Navbar.Brand href="#home" className="d-flex align-items-center gap-3" style={{ fontFamily: "'Cinzel', Georgia, serif", color: '#ffffff', fontWeight: 700, fontSize: '1.4rem' }}>
+        <Navbar.Brand href='#Home' className="d-flex align-items-center gap-3" style={{ fontFamily: "'Cinzel', Georgia, serif", color: '#ffffff', fontWeight: 700, fontSize: '1.4rem' }}>
           <img 
             src={logo} 
             alt="Eagles Temple Logo" 
