@@ -1,0 +1,86 @@
+/* Container Wrapper matching your cinematic design */
+.about-page-wrapper {
+  background-color: #060b13; /* Deep spiritual midnight blue */
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+}
+
+/* Elegant Minimal Header Space */
+.about-hero {
+  background: linear-gradient(180deg, #0a1424 0%, #060b13 100%);
+  padding: 80px 0 40px 0;
+  position: relative;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.text-gold {
+  color: #d4af37; /* Metallic gold theme accent */
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+}
+
+.tracking-wider {
+  letter-spacing: 2px;
+}
+
+/* Theme Cards Structure */
+.theme-card {
+  background: rgba(13, 25, 44, 0.65) !important;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.theme-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(212, 175, 55, 0.3) !important;
+}
+
+/* Custom Welcome Details */
+.section-icon {
+  font-size: 2.5rem;
+  filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));
+}
+
+.welcome-text {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #e2e8f0 !important;
+}
+
+/* Multi-lingual Language Badges styling */
+.lang-badge {
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  color: #d4af37;
+  padding: 6px 18px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+}
+
+.lang-badge:hover {
+  background: #d4af37;
+  color: #060b13;
+}
+
+/* Split content cards */
+.message-gradient-card {
+  background: linear-gradient(135deg, rgba(13, 25, 44, 0.8) 0%, rgba(20, 38, 66, 0.8) 100%) !important;
+}
+
+.border-top-gold {
+  border-top: 1px solid rgba(212, 175, 55, 0.25) !important;
+}
+
+/* Lower Mission Strip Container */
+.mission-strip {
+  background: rgba(9, 18, 32, 0.85);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.05);
+}
+
+.max-w-2xl { max-width: 42rem; }
+.max-w-xl { max-width: 36rem; }

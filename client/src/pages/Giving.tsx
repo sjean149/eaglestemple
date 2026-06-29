@@ -1,7 +1,7 @@
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 import NavBar from "../components/NavBar";
 import EagleTemple4 from "../components/images/eaglestemple4.png";
-
+import "./Giving.css";
 
 export default function Giving() {
   return (
@@ -10,7 +10,11 @@ export default function Giving() {
 
       {/* HERO */}
       <section className="giving-hero position-relative text-white">
-       
+        <img
+          src={EagleTemple4}
+          alt="Church congregation"
+          className="hero-image"
+        />
 
         <div className="hero-overlay">
           <Container>
@@ -32,7 +36,7 @@ export default function Giving() {
       <Container className="my-5">
         <Row className="justify-content-center">
           <Col lg={8}>
-            <Card className="p-4 shadow-lg">
+            <Card className="p-4 shadow-sm">
               <h2 className="mb-4 text-center">Give Securely Online</h2>
 
               <Form>
@@ -91,6 +95,23 @@ export default function Giving() {
                   </Form.Select>
                 </Form.Group>
 
+                {/* Designation */}
+                <Form.Group className="mb-4">
+                  <Form.Label>Designate Your Gift</Form.Label>
+
+                  <Form.Select>
+                    <option>General Fund</option>
+
+                    <option>Tithes</option>
+
+                    <option>Building Fund</option>
+
+                    <option>Missions</option>
+
+                    <option>Youth Ministry</option>
+                  </Form.Select>
+                </Form.Group>
+
                 <Button size="lg" className="w-100">
                   Continue Giving
                 </Button>
@@ -105,14 +126,12 @@ export default function Giving() {
         <Container>
           <Row>
             <Col md={4}>
-              <Card className="p-4">
-                <h3 className="text-center">Serve</h3>
+              <h3>Serve</h3>
 
-                <p>
-                  Your generosity helps us serve families, outreach efforts, and
-                  our local community.
-                </p>
-              </Card>
+              <p>
+                Your generosity helps us serve families, outreach efforts, and
+                our local community.
+              </p>
             </Col>
 
             <Col md={4}>

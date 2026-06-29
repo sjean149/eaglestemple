@@ -11,7 +11,7 @@ export default function AboutHero() {
     <>
       <NavBar />
       <section className="about-hero py-5">
-        <Coid>
+        <Container fluid>
           <Row className="g-3">
             {/* TOP LEFT */}
             <Col md={9}>
@@ -82,7 +82,7 @@ export default function AboutHero() {
               </div>
             </Col>
           </Row>
-        </Coid>
+        </Container>
       </section>
 
       <AboutDoctrine />
