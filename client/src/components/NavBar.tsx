@@ -127,13 +127,14 @@ const NavBar: React.FC = () => {
                       </div>
                     </Link>
 
-                    <a href="#leadership" className="mega-nav-card mt-3">
+                    {/* FIXED: Swapped out anchor tag for react-router-dom Link */}
+                    <Link to="/leadership" className="mega-nav-card mt-3">
                       <div className="mega-card-icon">👑</div>
                       <div>
                         <div className="mega-card-title">Leadership</div>
                         <div className="mega-card-desc">Meet the pastors and advocates serving you</div>
                       </div>
-                    </a>
+                    </Link>
                   </div>
 
                   {/* RIGHT COLUMN: DEDICATED DOCTRINE SUB-MENU */}
@@ -142,7 +143,7 @@ const NavBar: React.FC = () => {
                     <div className="doctrine-links-grid mt-2">
                       
                       {/* WATER BAPTISM LINK */}
-                      <Link to="/doctrine/water-baptism" className="doctrine-sub-item active-doc">
+                      <Link to="/water-baptism" className="doctrine-sub-item active-doc">
                         <span className="doc-bullet">✦</span> 
                         <div>
                           <div className="doc-name">Water Baptism</div>
@@ -150,8 +151,8 @@ const NavBar: React.FC = () => {
                         </div>
                       </Link>
 
-                      {/* ORIGINAL SIN LINK (NOW LIVE & CLICKABLE) */}
-                      <Link to="/doctrine/original-sin" className="doctrine-sub-item active-doc">
+                      {/* ORIGINAL SIN LINK */}
+                      <Link to="/original-sin" className="doctrine-sub-item active-doc">
                         <span className="doc-bullet">✦</span>
                         <div>
                           <div className="doc-name">The Original Sin</div>
@@ -159,15 +160,16 @@ const NavBar: React.FC = () => {
                         </div>
                       </Link>
 
-                      {/* PLACEHOLDERS */}
-                      <div className="doctrine-sub-item disabled-doc">
+                      {/* THE TRUTH ABOUT SABBATH LINK */}
+                      <Link to="/sabbath-truth" className="doctrine-sub-item active-doc">
                         <span className="doc-bullet">✦</span>
                         <div>
                           <div className="doc-name">The Truth about Sabbath</div>
-                          <small className="doc-meta">Coming Soon</small>
+                          <small className="doc-meta">24 Sabbatical Lies Refuted</small>
                         </div>
-                      </div>
+                      </Link>
 
+                      {/* REMAINING PLACEHOLDERS */}
                       <div className="doctrine-sub-item disabled-doc">
                         <span className="doc-bullet">✦</span>
                         <div>
