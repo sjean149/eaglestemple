@@ -1,5 +1,4 @@
 import {Container, Row, Col} from "react-bootstrap";
-import NavBar from "../components/NavBar";
 import AboutDoctrine from "../components/AboutDoctrine";
 
 import Leaders from "../assets/partnersincrime.jpg";
@@ -9,7 +8,6 @@ import "./About.css"
 export default function AboutHero() {
   return (
     <>
-      <NavBar />
       <section className="about-hero py-5">
         <Container fluid>
           <Row className="g-3">

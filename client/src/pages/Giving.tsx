@@ -5,7 +5,7 @@ import "./Giving.css";
 
 export default function Giving() {
   return (
-    <>
+    <div className="giving-page">
       <NavBar />
 
       {/* HERO */}
@@ -16,12 +16,12 @@ export default function Giving() {
           className="hero-image"
         />
 
-        <div className="hero-overlay">
-          <Container>
+        
+          <Container className="hero-overlay">
             <div className="hero-text">
               <h5>Support the Mission</h5>
 
-              <h1>Thank You for Your Generosity</h1>
+              <h2>Thank You for Your Generosity</h2>
 
               <p>
                 Your giving helps Eagles Temple continue serving our community,
@@ -29,11 +29,11 @@ export default function Giving() {
               </p>
             </div>
           </Container>
-        </div>
+        
       </section>
 
       {/* GIVE FORM */}
-      <Container className="my-5">
+      <Container className="giving-section mt-0">
         <Row className="justify-content-center">
           <Col lg={8}>
             <Card className="p-4 shadow-sm">
@@ -94,23 +94,7 @@ export default function Giving() {
                     <option>Bank Transfer</option>
                   </Form.Select>
                 </Form.Group>
-
-                {/* Designation */}
-                <Form.Group className="mb-4">
-                  <Form.Label>Designate Your Gift</Form.Label>
-
-                  <Form.Select>
-                    <option>General Fund</option>
-
-                    <option>Tithes</option>
-
-                    <option>Building Fund</option>
-
-                    <option>Missions</option>
-
-                    <option>Youth Ministry</option>
-                  </Form.Select>
-                </Form.Group>
+                
 
                 <Button size="lg" className="w-100">
                   Continue Giving
@@ -194,6 +178,6 @@ export default function Giving() {
           <p>— 2 Corinthians 9:7</p>
         </Container>
       </section>
-    </>
+    </div>
   );
 }

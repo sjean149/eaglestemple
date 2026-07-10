@@ -4,10 +4,13 @@ import Giving from "./pages/Giving";
 import Sermons from "./pages/Sermons";
 import About from "./pages/About";
 import Login from "./pages/Login"; 
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
+
     <BrowserRouter>
+    <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/giving" element={<Giving />} />

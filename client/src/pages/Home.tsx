@@ -29,7 +29,7 @@ function Home() {
             </>
           }
         />
-        <Route path="/doctrine/water-baptism" element={<WaterBaptism />} />
+        <Route path="../components/doctrine/water-baptism" element={<WaterBaptism />} />
 
         {/* Clean, standard lowercase slug */}
         <Route path="/doctrine/original-sin" element={<OriginalSin />} />
