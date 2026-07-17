@@ -1,16 +1,14 @@
-import { Container, Row, Col, Form, Dropdown, Button } from "react-bootstrap";
-import { useEffect, useState } from "react";
+import { Container, Row, Col, Form, Dropdown} from "react-bootstrap";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Preacher from "../assets/andrewpreach.jpg";
 import Congregation from "../assets/congregationpreach.jpg";
 
-import "./Sermons.css";
-import MessageCard from "../components/MessageCard";
+import "./SearchSermons.css";
+import SermonCardsList from "../components/SermonCardsList";
 
 export default function Sermons() {
-
-  
 
   return (
     <div className="sermon-page">
@@ -105,20 +103,15 @@ export default function Sermons() {
           </Form>
         </div>
       </Container>
+
       <Container>
         <Row>
-          <Col>{<MessageCard />}</Col>
-          <Col>{<MessageCard />}</Col>
-          <Col>{<MessageCard />}</Col>
-          <Col>{<MessageCard />}</Col>
-        </Row>
-        <Row>
-          <Col>{<MessageCard />}</Col>
-          <Col>{<MessageCard />}</Col>
-          <Col>{<MessageCard />}</Col>
-          <Col>{<MessageCard />}</Col>
+          <SermonCardsList />
         </Row>
       </Container>
+      
+
+      
     </div>
   );
 }

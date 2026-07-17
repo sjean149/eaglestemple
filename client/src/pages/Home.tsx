@@ -5,7 +5,7 @@ import WaterBaptism from "../components/WaterBaptism";
 import OriginalSin from "../components/OriginalSin";
 import HeroSection from "../components/HeroSection";
 import First_Section from "../components/First_Section";
-import SermonSeries from "../components/SermonSeries";
+import SermonSeries from "../components/frontpagecard";
 import Footer from "../components/Footer";
 import BackgroundAudio from "../components/BackgroundAudio";
 import About from "../components/About";

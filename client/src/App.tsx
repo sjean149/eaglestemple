@@ -1,10 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Giving from "./pages/Giving";
-import Sermons from "./pages/Sermons";
+import Sermons from "./pages/SearchSermons";
 import About from "./pages/About";
 import Login from "./pages/Login"; 
 import NavBar from "./components/NavBar";
+
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/sermons" element={<Sermons />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );

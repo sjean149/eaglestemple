@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
-import './SermonSeries.css';
+import './frontpagecard.css';
 
 // Import graphics securely
 import eagleBg from './images/bald-eagle.png'; // Top Banner Image

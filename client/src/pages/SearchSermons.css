@@ -1,6 +1,9 @@
-* {
-     background-color: #030712; 
-}
+
+.sermon-page, .card {
+    background-color: #030712;
+    color: white;
+} 
+
 .hero-box {
     height: 30vh;
 }
