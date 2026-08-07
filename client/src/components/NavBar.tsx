@@ -10,8 +10,10 @@ export default function NavBar() {
   const submenus = [
     { name: "Water Baptism", path: "/water-baptism", icon: "🌊", desc: "The burial of the old life" },
     { name: "Original Sin", path: "/original-sin", icon: "📖", desc: "Unveiling the Edenic mystery" },
+    { name: "Communion", path: "/communion", icon: "🍞", desc: "The Lord's Supper & foot washing" },
     { name: "The Godhead", path: "/the-godhead", icon: "🕊️", desc: "The supreme mystery revealed" },
-    { name: "The Spoken Word", path: "/spoken-word", icon: "🗣️", desc: "The seed for this hour" }
+    { name: "The Spoken Word", path: "/spoken-word", icon: "🗣️", desc: "The seed for this hour" },
+    { name: "The Rapture", path: "/rapture", icon: "🎺", desc: "The translation of the Bride" }
   ];
 
   return (

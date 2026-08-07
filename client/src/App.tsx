@@ -5,6 +5,8 @@ import WaterBaptism from "./components/WaterBaptism";
 import SabbathTruth from "./components/SabbathTruth";
 import HeroSection from "./components/HeroSection";
 import First_Section from "./components/First_Section";
+import Communion from "./components/Communion";
+import Rapture from "./components/Rapture";
 import SermonSeries from "./components/SermonSeries";
 import Footer from "./components/Footer";
 
@@ -37,6 +39,8 @@ function App() {
             <Route path="/original-sin" element={<OriginalSin />} />
             <Route path="/water-baptism" element={<WaterBaptism />} />
             <Route path="/sabbath-truth" element={<SabbathTruth />} />
+            <Route path="/communion" element={<Communion />} />
+            <Route path="/rapture" element={<Rapture />} />
           </Routes>
         </main>
         
