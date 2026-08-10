@@ -1,9 +1,9 @@
-import {Container, Row, Col} from "react-bootstrap";
-import AboutDoctrine from "../components/AboutDoctrine";
+import { Container, Row, Col } from "react-bootstrap";
+import AboutDoctrine from "../components/AboutHistory";
 
 import Leaders from "../assets/partnersincrime.jpg";
 import Hands from "../assets/hands.jpg";
-import "./About.css"
+import "./About.css";
 
 export default function AboutHero() {
   return (
@@ -23,11 +23,13 @@ export default function AboutHero() {
                 </h1>
 
                 <p className="lead mt-4">
-                  <i><b>
-                    Welcome to Eagles Temple. We are committed to helping people
-                    grow in faith, build meaningful relationships, and discover
-                    God’s purpose for their lives.
-                  </b></i>
+                  <i>
+                    <b>
+                      Welcome to Eagles Temple. We are committed to helping
+                      people grow in faith, build meaningful relationships, and
+                      discover God’s purpose for their lives.
+                    </b>
+                  </i>
                 </p>
 
                 <p>

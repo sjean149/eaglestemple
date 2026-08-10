@@ -1,0 +1,220 @@
+/* Main Navbar Layout */
+.navbar-container {
+  width: 100%;
+  background-color: #000000;
+  padding: 16px 0;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-inner {
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* Left Side: Logo & Brand */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-decoration: none;
+}
+
+.logo-wrapper {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.brand-title {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.6rem;
+  letter-spacing: 0.05em;
+  font-family: 'Times New Roman', Times, Georgia, serif;
+  text-shadow: 1px 1px 2px #ffc107, -1px -1px 2px #ffc107;
+}
+
+/* Right Side: Navigation Links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.nav-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.15rem;
+  font-weight: 500;
+  font-family: 'Times New Roman', Times, Georgia, serif;
+}
+
+/* Dropdown Trigger */
+.dropdown-trigger {
+  position: relative;
+  padding-bottom: 15px;
+  margin-top: 15px;
+}
+
+.dropdown-label {
+  color: #ffffff;
+  font-size: 1.15rem;
+  font-weight: 500;
+  font-family: 'Times New Roman', Times, Georgia, serif;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.dropdown-label.open {
+  color: #ffc107;
+}
+
+.arrow-icon {
+  font-size: 0.75rem;
+  transition: transform 0.3s;
+}
+
+.arrow-icon.open {
+  transform: rotate(180deg);
+}
+
+/* Dropdown Panel Menu */
+.dropdown-panel {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #0a0f1d;
+  border: 1px solid rgba(255, 193, 7, 0.3);
+  border-radius: 12px;
+  padding: 24px;
+  width: 520px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 193, 7, 0.05);
+  margin-top: 0px;
+  z-index: 10000;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Top Indicator Arrow */
+.panel-arrow {
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 12px;
+  height: 12px;
+  background-color: #0a0f1d;
+  border-left: 1px solid rgba(255, 193, 7, 0.3);
+  border-top: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+/* Submenu Cards */
+.submenu-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Modern Dark Brown Hover Effect */
+.submenu-card:hover {
+  background-color: #3e2723;
+  border-color: rgba(255, 193, 7, 0.6);
+  transform: translateY(-2px);
+  box-shadow: inset 0 0 12px rgba(255, 193, 7, 0.15);
+}
+
+/* Circle Icon Badges */
+.icon-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #03050c;
+  border: 1px solid rgba(255, 193, 7, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: border-color 0.25s ease;
+}
+
+.badge-icon {
+  font-size: 1.15rem;
+}
+
+.submenu-card:hover .icon-badge {
+  border-color: #ffc107;
+}
+
+/* Typography Inside Cards */
+.text-stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.submenu-title {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.05rem;
+  font-family: 'Times New Roman', Times, Georgia, serif;
+  line-height: 1.2;
+  transition: color 0.25s ease;
+}
+
+.submenu-card:hover .submenu-title {
+  color: #ffc107;
+}
+
+.submenu-desc {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.78rem;
+  margin-top: 3px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  transition: color 0.25s ease;
+}
+
+.submenu-card:hover .submenu-desc {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Join Us CTA Link */
+.join-btn {
+  color: #ffb300;
+  text-decoration: none;
+  font-size: 1.15rem;
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, Georgia, serif;
+  cursor: pointer;
+}

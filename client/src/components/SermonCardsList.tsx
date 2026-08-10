@@ -1,77 +1,84 @@
-import React from "react";
-import { Card, Ratio} from "react-bootstrap";
 import { useEffect, useState } from "react";
-
+import Card from "react-bootstrap/Card";
 
 const SermonCardsList = () => {
-  const [playlists, setPlaylists] = useState<any>([]);
+  const [videos, setVideos] = useState([]);
+
   const API_KEY = "AIzaSyBpRSSilNcn8xzX4lqLT61UCfn_rcFWIXo";
   const CHANNEL_ID = "UCpYxcXAYhtXBoatthM2hnHg";
-  const YOUTUBE_PLAYLIST_API = `https://youtube.googleapis.com/youtube/v3/playlists?part=snippet&channelId=${CHANNEL_ID}&maxResults=25&key=${API_KEY}`;
- 
-  
- useEffect(() => {
-   async function getPlaylists() {
-     try {
-       const res = await fetch(YOUTUBE_PLAYLIST_API);
-       const data = await res.json();
 
-       console.log(data);
+  useEffect(() => {
+    async function getVideos() {
+      try {
+        // Get the uploads playlist ID
+        const channelRes = await fetch(
+          `https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${CHANNEL_ID}&key=${API_KEY}`
+        );
 
-       if (data.items) {
-         setPlaylists(data.items);
-       }
-     } catch (err) {
-       console.error(err);
-     }
-   }
+        const channelData = await channelRes.json();
 
-   getPlaylists();
- }, []);
+        const uploadsPlaylistId =
+          channelData.items[0].contentDetails.relatedPlaylists.uploads;
 
+        // Fetch the uploaded videos
+        const videosRes = await fetch(
+          `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsPlaylistId}&maxResults=50&key=${API_KEY}`
+        );
 
-return (
-  <>
-    {playlists.map((playlist) => (
-      <Card
-        key={playlist.id}
-        className="mb-5"
-        style={{ width: "18rem" }}
-      >
-        <Ratio aspectRatio="16x9">
+        const videosData = await videosRes.json();
+
+        console.log(videosData);
+
+        setVideos(videosData.items);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    getVideos();
+  }, []);
+
+  return (
+    <>
+      {videos.map((video) => (
+        <Card
+          key={video.snippet.resourceId.videoId}
+          className="mb-5"
+          style={{ width: "18rem" }}
+        >
           <Card.Img
             variant="top"
-            src={playlist.snippet.thumbnails.high?.url}
+            src={
+              video.snippet.thumbnails.high?.url ||
+              video.snippet.thumbnails.medium?.url ||
+              video.snippet.thumbnails.default?.url
+            }
           />
-        </Ratio>
 
-        <Card.Body className="text-white">
-          <Card.Title>
-            {playlist.snippet.title}
-          </Card.Title>
+          <Card.Body className="text-white">
+            <Card.Title>{video.snippet.title}</Card.Title>
 
-          <div className="d-flex justify-content-between align-items-center">
-            <Card.Text className="mb-0">
-              Pastor
-            </Card.Text>
+            <div className="d-flex justify-content-between align-items-center">
+              <Card.Text className="mb-0">
+                Pastor Bernard Jean-Mary
+              </Card.Text>
 
-            <span>|</span>
+              <span>|</span>
 
-            <Card.Text className="mb-0">
-              {new Date(
-                playlist.snippet.publishedAt
-              ).toLocaleDateString()}
-            </Card.Text>
-          </div>
-        </Card.Body>
-      </Card>
-    ))}
-  </>
-);
-}
+              <Card.Text className="mb-0">
+                {new Date(
+                  video.snippet.publishedAt
+                ).toLocaleDateString()}
+              </Card.Text>
+            </div>
+          </Card.Body>
+        </Card>
+      ))}
+    </>
+  );
+};
 
 export default SermonCardsList;
-
 
 /*
 const MessageCard = () => {

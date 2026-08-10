@@ -1,166 +1,190 @@
-import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
-import NavBar from "../components/NavBar";
+import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import EagleTemple4 from "../components/images/eaglestemple4.png";
 import "./Giving.css";
 
 export default function Giving() {
   return (
-    <div className="giving-page">
-      <NavBar />
-
+    <>
       {/* HERO */}
-      <section className="giving-hero position-relative text-white">
+      <section
+        style={{
+          position: "relative",
+          minHeight: "75vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          overflow: "hidden",
+        }}
+      >
         <img
           src={EagleTemple4}
-          alt="Church congregation"
-          className="hero-image"
+          alt="Church Worship"
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
         />
 
-        
-          <Container className="hero-overlay">
-            <div className="hero-text">
-              <h5>Support the Mission</h5>
+        {/* Overlay */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(180deg, rgba(3,7,18,.75) 0%, rgba(3,7,18,.55) 45%, rgba(3,7,18,.92) 100%)",
+          }}
+        />
 
-              <h2>Thank You for Your Generosity</h2>
+        <Container
+          className="text-center"
+          style={{
+            position: "relative",
+            zIndex: 2,
+            maxWidth: "850px",
+          }}
+        >
+          <span
+            style={{
+              color: "#fbbf24",
+              letterSpacing: "4px",
+              textTransform: "uppercase",
+              fontWeight: 600,
+            }}
+          >
+            Worship Through Giving
+          </span>
 
-              <p>
-                Your giving helps Eagles Temple continue serving our community,
-                supporting ministry, and spreading the Gospel.
-              </p>
-            </div>
-          </Container>
-        
-      </section>
+          <h1
+            style={{
+              fontFamily: "'Cinzel', serif",
+              fontSize: "4rem",
+              color: "#fff",
+              margin: "25px 0",
+            }}
+          >
+            Thank You for Your Generosity
+          </h1>
 
-      {/* GIVE FORM */}
-      <Container className="giving-section mt-0">
-        <Row className="justify-content-center">
-          <Col lg={8}>
-            <Card className="p-4 shadow-sm">
-              <h2 className="mb-4 text-center">Give Securely Online</h2>
+          <p
+            style={{
+              color: "#e5e7eb",
+              fontSize: "1.2rem",
+              lineHeight: "1.9",
+              maxWidth: "700px",
+              margin: "auto",
+            }}
+          >
+            Every gift helps Eagles Temple continue preaching the Gospel,
+            supporting missions, serving our community, and investing in future
+            generations.
+          </p>
 
-              <Form>
-                {/* Amount */}
-                <Form.Group className="mb-4">
-                  <Form.Label>Choose Amount</Form.Label>
-
-                  <div className="d-flex flex-wrap gap-2">
-                    <Button variant="outline-dark">$25</Button>
-                    <Button variant="outline-dark">$50</Button>
-                    <Button variant="outline-dark">$100</Button>
-                    <Button variant="outline-dark">$250</Button>
-                  </div>
-
-                  <Form.Control
-                    className="mt-3"
-                    type="number"
-                    placeholder="Enter custom amount"
-                  />
-                </Form.Group>
-
-                {/* Frequency */}
-                <Form.Group className="mb-4">
-                  <Form.Label>Giving Frequency</Form.Label>
-
-                  <div className="d-flex gap-4">
-                    <Form.Check
-                      type="radio"
-                      label="One Time"
-                      name="frequency"
-                      defaultChecked
-                    />
-
-                    <Form.Check
-                      type="radio"
-                      label="Recurring"
-                      name="frequency"
-                    />
-                  </div>
-                </Form.Group>
-
-                {/* Payment */}
-                <Form.Group className="mb-4">
-                  <Form.Label>How would you like to give?</Form.Label>
-
-                  <Form.Select>
-                    <option>Select payment method</option>
-
-                    <option>Credit / Debit Card</option>
-
-                    <option>Apple Pay</option>
-
-                    <option>Google Pay</option>
-
-                    <option>Bank Transfer</option>
-                  </Form.Select>
-                </Form.Group>
-                
-
-                <Button size="lg" className="w-100">
-                  Continue Giving
-                </Button>
-              </Form>
-            </Card>
-          </Col>
-        </Row>
-      </Container>
-
-      {/* WHY WE GIVE */}
-      <section className="bg-light py-5">
-        <Container>
-          <Row>
-            <Col md={4}>
-              <h3>Serve</h3>
-
-              <p>
-                Your generosity helps us serve families, outreach efforts, and
-                our local community.
-              </p>
-            </Col>
-
-            <Col md={4}>
-              <h3>Support Ministry</h3>
-
-              <p>
-                Every contribution strengthens worship, discipleship, and church
-                programs.
-              </p>
-            </Col>
-
-            <Col md={4}>
-              <h3>Build the Future</h3>
-
-              <p>
-                Together we invest in future generations through children and
-                youth ministries.
-              </p>
-            </Col>
-          </Row>
+          <Button
+            href="https://pushpay.com/g/trinitymiami"
+            target="_blank"
+            className="mt-5 px-5 py-3"
+            style={{
+              background: "#fbbf24",
+              color: "#000",
+              border: "none",
+              fontWeight: 700,
+              letterSpacing: "1px",
+            }}
+          >
+            Give Online
+          </Button>
         </Container>
       </section>
 
-      {/* OTHER WAYS */}
-      <section className="py-5">
+      {/* WHY WE GIVE */}
+      <section
+        style={{
+          background: "#030712",
+          color: "#fff",
+          padding: "100px 0",
+        }}
+      >
         <Container>
-          <h2 className="text-center mb-4">Other Ways to Give</h2>
+          <div className="text-center mb-5">
+            <span
+              style={{
+                color: "#fbbf24",
+                letterSpacing: "3px",
+                textTransform: "uppercase",
+              }}
+            >
+              Why We Give
+            </span>
 
-          <Row>
-            <Col md={6}>
-              <Card className="p-4 h-100">
-                <h4>Give In Person</h4>
+            <h2
+              style={{
+                fontFamily: "'Cinzel', serif",
+                marginTop: "20px",
+                marginBottom: "20px",
+              }}
+            >
+              Giving Changes Lives
+            </h2>
+          </div>
+
+          <Row className="g-4">
+            <Col lg={4}>
+              <Card
+                className="h-100 text-center"
+                style={{
+                  background: "#111827",
+                  color: "#fff",
+                  border: "1px solid rgba(251,191,36,.2)",
+                  padding: "40px 30px",
+                }}
+              >
+                <h3 style={{ color: "#fbbf24" }}>Serve</h3>
 
                 <p>
-                  Join us during service and place your offering in the giving
-                  box.
+                  Your generosity allows us to serve families, reach our
+                  community, and meet practical needs with the love of Christ.
                 </p>
               </Card>
             </Col>
 
-            <Col md={6}>
-              <Card className="p-4 h-100">
-                <h4>Text to Give</h4>
+            <Col lg={4}>
+              <Card
+                className="h-100 text-center"
+                style={{
+                  background: "#111827",
+                  color: "#fff",
+                  border: "1px solid rgba(251,191,36,.2)",
+                  padding: "40px 30px",
+                }}
+              >
+                <h3 style={{ color: "#fbbf24" }}>Support Ministry</h3>
 
-                <p>Text GIVE to (000) 000-0000 and follow the instructions.</p>
+                <p>
+                  Every offering strengthens worship services, Bible studies,
+                  discipleship, and outreach ministries.
+                </p>
+              </Card>
+            </Col>
+
+            <Col lg={4}>
+              <Card
+                className="h-100 text-center"
+                style={{
+                  background: "#111827",
+                  color: "#fff",
+                  border: "1px solid rgba(251,191,36,.2)",
+                  padding: "40px 30px",
+                }}
+              >
+                <h3 style={{ color: "#fbbf24" }}>Build the Future</h3>
+
+                <p>
+                  Your faithfulness helps invest in children, youth, missions,
+                  and the next generation of believers.
+                </p>
               </Card>
             </Col>
           </Row>
@@ -168,16 +192,40 @@ export default function Giving() {
       </section>
 
       {/* SCRIPTURE */}
-      <section className="giving-scripture text-center py-5">
-        <Container>
-          <blockquote>
-            “Each one must give as he has decided in his heart, not reluctantly
-            or under compulsion, for God loves a cheerful giver.”
+      <section
+        style={{
+          background: "#111827",
+          color: "#fff",
+          padding: "100px 0",
+        }}
+      >
+        <Container className="text-center">
+          <blockquote
+            style={{
+              fontFamily: "'Cinzel', serif",
+              fontSize: "2rem",
+              fontStyle: "italic",
+              maxWidth: "850px",
+              margin: "auto",
+              lineHeight: "1.8",
+            }}
+          >
+            "Each one must give as he has decided in his heart, not reluctantly
+            or under compulsion, for God loves a cheerful giver."
           </blockquote>
 
-          <p>— 2 Corinthians 9:7</p>
+          <p
+            style={{
+              marginTop: "30px",
+              color: "#fbbf24",
+              letterSpacing: "2px",
+              textTransform: "uppercase",
+            }}
+          >
+            2 Corinthians 9:7
+          </p>
         </Container>
       </section>
-    </div>
+    </>
   );
 }

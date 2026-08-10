@@ -1,0 +1,134 @@
+.timeline-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  padding: 40px 0 30px;
+  scrollbar-width: thin;
+  scrollbar-color: #fbbf24 rgba(15, 23, 42, 0.5);
+}
+
+.timeline {
+  position: relative;
+  display: flex;
+  min-width: 1100px;
+  padding: 80px 20px 30px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 92px;
+  left: 20px;
+  right: 20px;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    rgba(251, 191, 36, 0.25),
+    #fbbf24,
+    rgba(251, 191, 36, 0.25)
+  );
+}
+
+.timeline-item {
+  position: relative;
+  flex: 1;
+  min-width: 260px;
+  padding: 0 15px;
+}
+
+.timeline-dot {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #111827;
+  border: 3px solid #fbbf24;
+  color: #fbbf24;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  z-index: 2;
+}
+
+.timeline-card {
+  margin-top: 55px;
+  background: rgba(15, 23, 42, 0.88);
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  border-radius: 10px;
+  padding: 25px;
+  min-height: 360px;
+  backdrop-filter: blur(6px);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.timeline-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(251, 191, 36, 0.65);
+}
+
+.timeline-label {
+  color: #fbbf24;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.timeline-card h3 {
+  color: white;
+  font-family: "Cinzel", serif;
+  font-size: 1.5rem;
+  margin: 10px 0 18px;
+}
+
+.timeline-card p {
+  color: #cbd5e1;
+  line-height: 1.7;
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+  .doctrine-section {
+    background-attachment: scroll !important;
+  }
+
+  .timeline-wrapper {
+    overflow-x: visible;
+  }
+
+  .timeline {
+    display: block;
+    min-width: 0;
+    padding: 20px 0;
+  }
+
+  .timeline::before {
+    top: 0;
+    bottom: 0;
+    left: 22px;
+    right: auto;
+    width: 3px;
+    height: auto;
+  }
+
+  .timeline-item {
+    min-width: 0;
+    padding: 0 0 40px 60px;
+  }
+
+  .timeline-dot {
+    top: 0;
+    left: 22px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .timeline-card {
+    margin-top: 0;
+    min-height: auto;
+  }
+}
