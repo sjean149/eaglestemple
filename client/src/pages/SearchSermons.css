@@ -1,0 +1,46 @@
+
+.sermon-page, .card {
+    background-color: #030712;
+    color: white;
+} 
+
+.hero-box {
+    height: 30vh;
+}
+
+.hero-box img {
+   background-size: 80px;
+   opacity: 1;
+  
+}
+
+.hero-section {
+    position: relative;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Optional dark overlay */
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.all-sermons {
+    position: absolute;
+    top: 50px;
+}
+
+.search-sermons {
+    color: white;
+   
+}
+
+
+.player {
+    aspect-ratio: 16 / 9;
+}
