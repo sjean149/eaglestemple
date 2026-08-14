@@ -1,4 +1,11 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Home from "./pages/Home";
+import Giving from "./pages/Giving";
+import Sermons from "./pages/SearchSermons";
+import About from "./pages/About";
+import Login from "./pages/Login";
+
 import NavBar from "./components/NavBar";
 import OriginalSin from "./components/OriginalSin";
 import WaterBaptism from "./components/WaterBaptism";
@@ -12,42 +19,40 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <Router>
-      <div className="bg-black text-light min-vh-screen d-flex flex-column selection-gold">
-        {/* Persistent top navigation bar across all pages */}
-        <NavBar /> 
+    <BrowserRouter>
+      <NavBar />
 
-        <main className="flex-grow-1">
-          <Routes>
-            {/* 
-              HOMEPAGE ROUTE
-              Removed the <Home /> component to clear out the duplicate 
-              slideshow banner, message series, and text transcript sections.
-            */}
-            <Route 
-              path="/" 
-              element={
-                <>
-                  <HeroSection />
-                  <First_Section />
-                  <SermonSeries />
-                </>
-              } 
-            />
+      <main className="flex-grow-1">
+        <Routes>
+          {/* Homepage */}
+          <Route
+            path="/"
+            element={
+              <>
+                <HeroSection />
+                <First_Section />
+                <SermonSeries />
+              </>
+            }
+          />
 
-            {/* Inner Sub-pages */}
-            <Route path="/original-sin" element={<OriginalSin />} />
-            <Route path="/water-baptism" element={<WaterBaptism />} />
-            <Route path="/sabbath-truth" element={<SabbathTruth />} />
-            <Route path="/communion" element={<Communion />} />
-            <Route path="/rapture" element={<Rapture />} />
-          </Routes>
-        </main>
-        
-        {/* Persistent footer across all pages */}
-        <Footer />
-      </div>
-    </Router>
+          {/* Existing pages */}
+          <Route path="/giving" element={<Giving />} />
+          <Route path="/sermons" element={<Sermons />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/login" element={<Login />} />
+
+          {/* Inner sub-pages */}
+          <Route path="/original-sin" element={<OriginalSin />} />
+          <Route path="/water-baptism" element={<WaterBaptism />} />
+          <Route path="/sabbath-truth" element={<SabbathTruth />} />
+          <Route path="/communion" element={<Communion />} />
+          <Route path="/rapture" element={<Rapture />} />
+        </Routes>
+      </main>
+
+      <Footer />
+    </BrowserRouter>
   );
 }
 
