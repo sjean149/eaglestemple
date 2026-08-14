@@ -54,21 +54,17 @@ const SermonCardsList = () => {
               video.snippet.thumbnails.default?.url
             }
           />
-
+          
           <Card.Body className="text-white">
             <Card.Title>{video.snippet.title}</Card.Title>
 
             <div className="d-flex justify-content-between align-items-center">
-              <Card.Text className="mb-0">
-                Pastor Bernard Jean-Mary
-              </Card.Text>
+              <Card.Text className="mb-0">Pastor Bernard Jean-Mary</Card.Text>
 
               <span>|</span>
 
               <Card.Text className="mb-0">
-                {new Date(
-                  video.snippet.publishedAt
-                ).toLocaleDateString()}
+                {new Date(video.snippet.publishedAt).toLocaleDateString()}
               </Card.Text>
             </div>
           </Card.Body>
