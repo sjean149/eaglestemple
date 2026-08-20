@@ -15,6 +15,8 @@ import First_Section from "./components/First_Section";
 import Communion from "./components/Communion";
 import Rapture from "./components/Rapture";
 import SermonSeries from "./components/SermonSeries";
+import Godhead from "./components/Godhead";
+import SpokenWord from "./components/SpokenWord";
 import Footer from "./components/Footer";
 
 function App() {
@@ -48,6 +50,8 @@ function App() {
           <Route path="/sabbath-truth" element={<SabbathTruth />} />
           <Route path="/communion" element={<Communion />} />
           <Route path="/rapture" element={<Rapture />} />
+          <Route path="/godhead" element={<Godhead />} />
+          <Route path="/spoken-word" element={<SpokenWord />} />
         </Routes>
       </main>
 
@@ -57,3 +61,5 @@ function App() {
 }
 
 export default App;
+
+
