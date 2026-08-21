@@ -1,0 +1,181 @@
+.sermons-page {
+  min-height: 100vh;
+  background: #030712;
+  color: white;
+}
+
+/* HERO */
+
+.sermons-hero {
+  padding: 100px 0 90px;
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(30, 58, 138, 0.18),
+      transparent 45%
+    ),
+    #030712;
+}
+
+.sermons-heading {
+  max-width: 800px;
+  margin: 0 auto 65px;
+}
+
+.eyebrow {
+  color: #fbbf24;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 5px;
+}
+
+.sermons-heading h1 {
+  font-family: "Cinzel", serif;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  margin: 15px 0 20px;
+}
+
+.sermons-heading p {
+  color: #cbd5e1;
+  font-size: 1.15rem;
+  line-height: 1.8;
+}
+
+/* FEATURED SERMON */
+
+.featured-sermon {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.sermon-video {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid rgba(251, 191, 36, 0.25);
+  border-radius: 12px;
+  background: #000;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+.sermon-video iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.featured-info {
+  padding: 20px 15px 20px 40px;
+}
+
+.now-playing {
+  color: #fbbf24;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.featured-info h2 {
+  font-family: "Cinzel", serif;
+  font-size: 2.5rem;
+  margin: 12px 0 8px;
+}
+
+.featured-info h4 {
+  color: #cbd5e1;
+  font-weight: 400;
+  margin-bottom: 25px;
+}
+
+.sermon-date {
+  color: #fbbf24;
+}
+
+.featured-info p {
+  color: #cbd5e1;
+  line-height: 1.8;
+}
+
+.watch-button {
+  margin-top: 15px;
+  background: transparent !important;
+  border: 1px solid #fbbf24 !important;
+  color: #fbbf24 !important;
+  padding: 12px 22px;
+}
+
+.watch-button:hover {
+  background: #fbbf24 !important;
+  color: #111827 !important;
+}
+
+/* SERMON LIBRARY */
+
+.sermon-library {
+  padding: 80px 0 120px;
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
+  background: #070d17;
+}
+
+.library-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: 45px;
+}
+
+.library-header h2 {
+  font-family: "Cinzel", serif;
+  font-size: 2.5rem;
+  margin-top: 10px;
+}
+
+.sermon-search {
+  width: 280px;
+  padding: 13px 18px;
+  border-radius: 8px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: #0f172a;
+  color: white;
+  outline: none;
+}
+
+.sermon-search::placeholder {
+  color: #94a3b8;
+}
+
+.sermon-card-list {
+  width: 100%;
+}
+
+/* MOBILE */
+
+@media (max-width: 991px) {
+  .featured-info {
+    padding: 35px 0 0;
+  }
+
+  .library-header {
+    display: block;
+  }
+
+  .sermon-search {
+    margin-top: 20px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .sermons-hero {
+    padding: 70px 0;
+  }
+
+  .sermons-heading h1 {
+    font-size: 2.5rem;
+  }
+
+  .featured-info h2 {
+    font-size: 2rem;
+  }
+}

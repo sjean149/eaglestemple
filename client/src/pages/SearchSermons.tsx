@@ -10,6 +10,8 @@ import SermonCardsList from "../components/SermonCardsList";
 
 export default function Sermons() {
 
+
+
   return (
     <div className="sermon-page">
       <Container fluid className="hero-section px-0 position-relative">
@@ -105,8 +107,8 @@ export default function Sermons() {
       </Container>
 
       <Container>
-        <Row>
-          <SermonCardsList />
+        <Row> <SermonCardsList />
+         
         </Row>
       </Container>
       

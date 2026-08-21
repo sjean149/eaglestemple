@@ -5,6 +5,7 @@ import Giving from "./pages/Giving";
 import Sermons from "./pages/SearchSermons";
 import About from "./pages/About";
 import Login from "./pages/Login";
+import WatchSermons from "./components/WatchSermon";
 
 import NavBar from "./components/NavBar";
 import OriginalSin from "./components/OriginalSin";
@@ -48,6 +49,7 @@ function App() {
           <Route path="/sabbath-truth" element={<SabbathTruth />} />
           <Route path="/communion" element={<Communion />} />
           <Route path="/rapture" element={<Rapture />} />
+          <Route path = "WatchSermon" element={<WatchSermons />} />
         </Routes>
       </main>
 

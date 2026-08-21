@@ -4,6 +4,8 @@ import Card from "react-bootstrap/Card";
 const SermonCardsList = () => {
   const [videos, setVideos] = useState([]);
 
+
+
   const API_KEY = "AIzaSyBpRSSilNcn8xzX4lqLT61UCfn_rcFWIXo";
   const CHANNEL_ID = "UCpYxcXAYhtXBoatthM2hnHg";
 
@@ -38,85 +40,44 @@ const SermonCardsList = () => {
     getVideos();
   }, []);
 
+ 
+
   return (
     <>
-      {videos.map((video) => (
-        <Card
-          key={video.snippet.resourceId.videoId}
-          className="mb-5"
-          style={{ width: "18rem" }}
-        >
-          <Card.Img
-            variant="top"
-            src={
-              video.snippet.thumbnails.high?.url ||
-              video.snippet.thumbnails.medium?.url ||
-              video.snippet.thumbnails.default?.url
-            }
-          />
-          
-          <Card.Body className="text-white">
-            <Card.Title>{video.snippet.title}</Card.Title>
+      {videos.map((video) => {
+        const text = video.snippet.title;const 
+        
+        match = text.match(/"([^"]*)"\s+(.+?)\s+\d{1,2}\/\d{1,2}\/\d{2,4}/,);
 
-            <div className="d-flex justify-content-between align-items-center">
-              <Card.Text className="mb-0">Pastor Bernard Jean-Mary</Card.Text>
+        const sermonTitle = match?.[1] || "";
+        const speaker = match?.[2] || "";
 
-              <span>|</span>
+        return (
+          <Card
+            key={video.snippet.resourceId.videoId}
+            className="mb-5"
+            style={{ width: "18rem" }}
+          >
+            <Card.Img variant="top" src={video.snippet.thumbnails.high?.url} />
 
-              <Card.Text className="mb-0">
-                {new Date(video.snippet.publishedAt).toLocaleDateString()}
-              </Card.Text>
-            </div>
-          </Card.Body>
-        </Card>
-      ))}
+            <Card.Body className="text-white">
+              <Card.Title>{sermonTitle}</Card.Title>
+
+              <div className="d-flex justify-content-between align-items-center">
+                <Card.Text className="mb-0">{speaker}</Card.Text>
+
+                <span>|</span>
+
+                <Card.Text className="mb-0">
+                  {new Date(video.snippet.publishedAt).toLocaleDateString()}
+                </Card.Text>
+              </div>
+            </Card.Body>
+          </Card>
+        );
+      })}
     </>
   );
 };
 
 export default SermonCardsList;
-
-/*
-const MessageCard = () => {
-  const sermonName = "Academy And Benefits In Christ";
-  const speakerName = "Pastor Bernard Jean-Mary";
-  const date = "07/26"
-
-  const videoYT = (
-    <iframe
-      width="696"
-      height="391"
-      src="https://www.youtube.com/embed/Ra927pjrz64"
-      title={sermonName}
-      frameBorder={0}
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      referrerPolicy="strict-origin-when-cross-origin"
-      allowFullscreen
-    ></iframe>
-  );
-
-
-  return (
-    <>
-      <Card className="mb-5" style={{ width: "18rem" }}>
-        <Ratio aspectRatio="16x9">
-          {videoYT}
-        </Ratio>
-
-        <Card.Body className="text-white">
-          <Card.Title>{sermonName}</Card.Title>
-
-          <div className="d-flex justify-content-between align-items-center">
-            <Card.Text className="mb-0">{speakerName}</Card.Text>
-            <span>|</span>
-            <Card.Text className="mb-0">{date}</Card.Text>
-          </div>
-        </Card.Body>
-      </Card>
-    </>
-  );
-};
-
-
-export default MessageCard;
-*/
