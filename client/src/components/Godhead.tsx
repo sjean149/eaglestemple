@@ -1,12 +1,9 @@
 import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
 import "../styles/SermonSeries.css";
 
-// Image imports
-import raptureImg1 from "./images/eaglestemple2.png";
-import raptureImg2 from "./images/eaglestemple3.png";
-import raptureBg from "./images/rapture.jpg";
+// Background image import
+import spokenWordBg from "./images/spoken-word.jpg";
 
 interface QAItem {
   id: number;
@@ -16,52 +13,51 @@ interface QAItem {
   aFr: string;
 }
 
-export default function Rapture() {
-  const navigate = useNavigate();
+export default function SpokenWord() {
   const [activeHoverId, setActiveHoverId] = useState<number | null>(null);
 
-  const rapturePairs: QAItem[] = [
+  const spokenWordPairs: QAItem[] = [
     {
       id: 1,
-      qEn: "1. What is the biblical definition of the Rapture?",
-      aEn: "The Rapture is the sudden catching away of the Living Bride of Jesus Christ, along with the resurrected saints, transformed into immortal bodies to meet the Lord in the air before the Great Tribulation.",
-      qFr: "1. Quelle est la définition biblique de l'Enlèvement?",
-      aFr: "L'Enlèvement est le départ soudain de l'Épouse vivante de Jésus-Christ, ainsi que des saints ressuscités, transformés en corps immortels pour rencontrer le Seigneur dans les airs avant la Grande Tribulation."
+      qEn: "1. What is the power of the Spoken Word?",
+      aEn: "The Spoken Word is the original seed of God. When spoken under the inspiration and perfect authority of the Holy Spirit, it carries creative power to bring into existence whatever God has ordained.",
+      qFr: "1. Quelle est la puissance de la Parole Parlée?",
+      aFr: "La Parole Parlée est la semence originale de Dieu. Lorsqu'elle est prononcée sous l'inspiration et l'autorité parfaite du Saint-Esprit, elle transporte la puissance créatrice pour amener à l'existence ce que Dieu a ordonné."
     },
     {
       id: 2,
-      qEn: "2. What three things must take place according to 1 Thessalonians 4:16?",
-      aEn: "According to 1 Thessalonians 4:16, the Lord descends with three distinct events: a Shout (the Message to gather the Bride), the Voice of the Archangel (to resurrect the dead), and the Trumpet of God (calling us to the Wedding Supper).",
-      qFr: "2. Quelles sont les trois choses qui doivent se produire selon 1 Thessaloniciens 4:16?",
-      aFr: "Selon 1 Thessaloniciens 4:16, le Seigneur descend avec trois événements distincts : un Cri (le Message pour rassembler l'Épouse), la Voix de l'Archange (pour ressusciter les morts), et la Trompette de Dieu (nous appelant au Festin des Noces)."
+      qEn: "2. Why is the Spoken Word called the Original Seed?",
+      aEn: "Every seed produces after its own kind (Genesis 1:11). The Spoken Word of God is unadulterated truth. Denominational creeds alter the seed, but the Spoken Word produces genuine, born-again sons and daughters of God.",
+      qFr: "2. Pourquoi la Parole Parlée est-elle appelée la Semence Originale?",
+      aFr: "Chaque semence produit selon son espèce (Genèse 1:11). La Parole Parlée de Dieu est une vérité pure. Les credos dénominationnels altèrent la semence, mais la Parole Parlée produit de véritables fils et filles de Dieu nés de nouveau."
     },
     {
       id: 3,
-      qEn: "3. What is the mystery of the 'Shout' in this end time?",
-      aEn: "The Shout is the restored Word message delivered by the prophet of Malachi 4. It awakens the Bride, reveals the mystery of the Seven Seals, and gathers the Bride out of denominational confusion.",
-      qFr: "3. Quel est le mystère du 'Cri' en ce temps de la fin?",
-      aFr: "Le Cri est le message de la Parole restaurée apporté par le prophète de Malachie 4. Il réveille l'Épouse, révèle le mystère des Sept Sceaux et rassemble l'Épouse hors de la confusion dénominationnelle."
+      qEn: "3. How does Faith connect to the Spoken Word?",
+      aEn: "Faith comes by hearing, and hearing by the Word of God (Romans 10:17). True faith is not mental assent; it is a divine revelation that gives the believer the confidence to speak the Word and see it manifested.",
+      qFr: "3. Comment la Foi se rattache-t-elle à la Parole Parlée?",
+      aFr: "La foi vient de ce qu'on entend, et ce qu'on entend vient de la Parole de Dieu (Romains 10:17). La vraie foi n'est pas un assentiment mental; c'est une révélation divine qui donne au croyant la confiance de prononcer la Parole et de la voir se manifester."
     },
     {
       id: 4,
-      qEn: "4. How will the bodies of the believers be changed?",
-      aEn: "In a moment, in the twinkling of an eye, these mortal bodies will put on immortality (1 Corinthians 15:52). We will bypass death and receive a glorified, eternal body like unto His glorious body.",
-      qFr: "4. Comment les corps des croyants seront-ils changés?",
-      aFr: "En un instant, en un clin d'œil, ces corps mortels revêtiront l'immortalité (1 Corinthiens 15:52). Nous contournerons la mort et recevrons un corps glorifié et éternel semblable à Son corps glorieux."
+      qEn: "4. What role did the Spoken Word play in Brother Branham's ministry?",
+      aEn: "God demonstrated the creative power of the Spoken Word through His prophet—creating squirrels, calming storms, and speaking healing—proving that Jesus Christ is the same yesterday, today, and forever.",
+      qFr: "4. Quel rôle la Parole Parlée a-t-elle joué dans le ministère de Frère Branham?",
+      aFr: "Dieu a démontré la puissance créatrice de la Parole Parlée à travers Son prophète — en créant des écureuils, en calmant les tempêtes et en prononçant la guérison — prouvant que Jésus-Christ est le même hier, aujourd'hui et éternellement."
     },
     {
       id: 5,
-      qEn: "5. Why is Raptor Faith necessary for the Bride?",
-      aEn: "Rapturing Faith is the revelation of the Seven Thunders. It gives the Bride the spiritual grace, perfection, and faith required to step out of gravity and be translated into the presence of God.",
-      qFr: "5. Pourquoi la Foi de l'Enlèvement est-elle nécessaire pour l'Épouse?",
-      aFr: "La Foi de l'Enlèvement est la révélation des Sept Tonnerres. Elle donne à l'Épouse la grâce spirituelle, la perfection et la foi nécessaires pour sortir de la gravité et être translatée dans la présence de Dieu."
+      qEn: "5. How does the Third Pull relate to the Spoken Word?",
+      aEn: "The Third Pull represents the total opening of the Word and the ministry of the Spoken Word. It operates not by emotion, but by the sovereign decree of the Holy Ghost working through pure faith.",
+      qFr: "5. Quel est le rapport entre le Troisième Signal et la Parole Parlée?",
+      aFr: "Le Troisième Signal représente l'ouverture totale de la Parole et le ministère de la Parole Parlée. Il n'agit pas par l'émotion, mais par le décret souverain du Saint-Esprit opérant à travers une foi pure."
     },
     {
       id: 6,
-      qEn: "6. Who will participate in the Marriage Supper of the Lamb?",
-      aEn: "Only the Predestinated Bride who has made herself ready (Revelation 19:7) by putting on the immaculate garment of the Word will partake in the 3.5-year Marriage Supper while judgment falls on earth.",
-      qFr: "6. Qui participera au Festin des Noces de l'Agneau?",
-      aFr: "Seule l'Épouse Prédestinée qui s'est préparée (Apocalypse 19:7) en revêtant le vêtement immaculé de la Parole participera au Festin des Noces de 3 ans et demi pendant que le jugement tombe sur la terre."
+      qEn: "6. What is the final manifestation of the Spoken Word in the Bride?",
+      aEn: "In the final hour, the Bride will be so fully unified with the Word that she will speak the Word, and God will honor it. This creative Word faith prepares her for the Rapture.",
+      qFr: "6. Quelle est la manifestation finale de la Parole Parlée dans l'Épouse?",
+      aFr: "Dans l'heure finale, l'Épouse sera tellement unie à la Parole qu'elle prononcera la Parole et Dieu l'honorera. Cette foi de la Parole créatrice la prépare pour l'Enlèvement."
     }
   ];
 
@@ -69,7 +65,7 @@ export default function Rapture() {
     <section 
       className="sermon-series-section position-relative"
       style={{
-        backgroundImage: `url(${raptureBg})`,
+        backgroundImage: `url(${spokenWordBg})`,
         backgroundSize: "cover",
         backgroundPosition: "center 25%",
         backgroundAttachment: "fixed",
@@ -93,13 +89,13 @@ export default function Rapture() {
         {/* Header Section */}
         <div className="text-center mb-5">
           <span className="sermon-series-label">OUR FAITH & DOCTRINE</span>
-          <h2 className="sermon-series-heading">The Revelation of the Rapture</h2>
+          <h2 className="sermon-series-heading">The Power of the Spoken Word</h2>
           
           <div className="mx-auto mb-4 position-relative d-flex justify-content-center align-items-center sermon-series-divider">
             <div className="sermon-series-diamond" />
           </div>
           <p className="text-light fs-5 mx-auto" style={{ maxWidth: "800px" }}>
-            Exploring the mystery of the translation of the Bride, the Shout, the Voice, and the Trumpet according to the Scriptures.
+            Unveiling the mystery of the Original Seed, creative faith, and the authority of God's Word in the end-time Bride.
           </p>
         </div>
 
@@ -119,7 +115,7 @@ export default function Rapture() {
 
         {/* Synchronized Row-by-Row Q&A Layout */}
         <div className="mb-5">
-          {rapturePairs.map((pair) => {
+          {spokenWordPairs.map((pair) => {
             const isHighlighted = activeHoverId === pair.id;
 
             const cardStyle = {
@@ -175,8 +171,6 @@ export default function Rapture() {
             );
           })}
         </div>
-
-      
       </Container>
     </section>
   );
