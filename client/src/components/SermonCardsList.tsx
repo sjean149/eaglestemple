@@ -45,7 +45,8 @@ const SermonCardsList = () => {
   return (
     <>
       {videos.map((video) => {
-        const text = video.snippet.title;const 
+        const text = video.snippet.title;
+        const 
         
         match = text.match(/"([^"]*)"\s+(.+?)\s+\d{1,2}\/\d{1,2}\/\d{2,4}/,);
 
