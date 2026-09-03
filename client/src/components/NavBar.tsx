@@ -66,6 +66,9 @@ export default function NavBar() {
               </div>
             )}
           </div>
+
+          {/* Location / Map Link */}
+          <Link to="/location" className="nav-link">Find Us</Link>
           
           <span onClick={() => navigate('/')} className="join-btn">
             Join Us

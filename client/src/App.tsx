@@ -5,16 +5,17 @@ import Giving from "./pages/Giving";
 import Sermons from "./pages/SearchSermons";
 import About from "./pages/About";
 import Login from "./pages/Login";
-
 import NavBar from "./components/NavBar";
+import HeroSection from "./components/HeroSection";
+import LastMessenger from "./components/LastMessenger";
+import First_Section from "./components/First_Section";
+import SermonSeries from "./components/SermonSeries";
+import LocationMap from "./components/LocationMap"; // <-- Imported LocationMap component
 import OriginalSin from "./components/OriginalSin";
 import WaterBaptism from "./components/WaterBaptism";
 import SabbathTruth from "./components/SabbathTruth";
-import HeroSection from "./components/HeroSection";
-import First_Section from "./components/First_Section";
 import Communion from "./components/Communion";
 import Rapture from "./components/Rapture";
-import SermonSeries from "./components/SermonSeries";
 import Godhead from "./components/Godhead";
 import SpokenWord from "./components/SpokenWord";
 import Footer from "./components/Footer";
@@ -32,8 +33,9 @@ function App() {
             element={
               <>
                 <HeroSection />
+                <LastMessenger />
                 <First_Section />
-                <SermonSeries />
+              
               </>
             }
           />
@@ -43,6 +45,7 @@ function App() {
           <Route path="/sermons" element={<Sermons />} />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/location" element={<LocationMap />} /> {/* <-- Dedicated route for /location */}
 
           {/* Inner sub-pages */}
           <Route path="/original-sin" element={<OriginalSin />} />
@@ -61,5 +64,3 @@ function App() {
 }
 
 export default App;
-
-

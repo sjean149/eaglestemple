@@ -1,122 +1,58 @@
-import { useEffect, useState } from "react";
-import Card from "react-bootstrap/Card";
+import { Row, Col, Card } from "react-bootstrap";
 
-const SermonCardsList = () => {
-  const [videos, setVideos] = useState([]);
+interface Video {
+  id: string;
+  title: string;
+  description: string;
+  publishedAt: string;
+  thumbnail: string;
+  videoUrl: string;
+}
 
-  const API_KEY = "AIzaSyBpRSSilNcn8xzX4lqLT61UCfn_rcFWIXo";
-  const CHANNEL_ID = "UCpYxcXAYhtXBoatthM2hnHg";
+interface SermonCardsListProps {
+  videos: Video[];
+}
 
-  useEffect(() => {
-    async function getVideos() {
-      try {
-        // Get the uploads playlist ID
-        const channelRes = await fetch(
-          `https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${CHANNEL_ID}&key=${API_KEY}`
-        );
-
-        const channelData = await channelRes.json();
-
-        const uploadsPlaylistId =
-          channelData.items[0].contentDetails.relatedPlaylists.uploads;
-
-        // Fetch the uploaded videos
-        const videosRes = await fetch(
-          `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsPlaylistId}&maxResults=50&key=${API_KEY}`
-        );
-
-        const videosData = await videosRes.json();
-
-        console.log(videosData);
-
-        setVideos(videosData.items);
-      } catch (err) {
-        console.error(err);
-      }
-    }
-
-    getVideos();
-  }, []);
+export default function SermonCardsList({ videos }: SermonCardsListProps) {
+  if (videos.length === 0) {
+    return (
+      <Col className="text-center py-5">
+        <p className="fs-5 text-muted">No sermons found matching your criteria.</p>
+      </Col>
+    );
+  }
 
   return (
-    <>
+    <Row className="g-4">
       {videos.map((video) => (
-        <Card
-          key={video.snippet.resourceId.videoId}
-          className="mb-5"
-          style={{ width: "18rem" }}
-        >
-          <Card.Img
-            variant="top"
-            src={
-              video.snippet.thumbnails.high?.url ||
-              video.snippet.thumbnails.medium?.url ||
-              video.snippet.thumbnails.default?.url
-            }
-          />
-          
-          <Card.Body className="text-white">
-            <Card.Title>{video.snippet.title}</Card.Title>
-
-            <div className="d-flex justify-content-between align-items-center">
-              <Card.Text className="mb-0">Pastor Bernard Jean-Mary</Card.Text>
-
-              <span>|</span>
-
-              <Card.Text className="mb-0">
-                {new Date(video.snippet.publishedAt).toLocaleDateString()}
+        <Col key={video.id} md={6} lg={4}>
+          <Card className="h-100 shadow-sm border-0">
+            <a href={video.videoUrl} target="_blank" rel="noopener noreferrer">
+              <Card.Img variant="top" src={video.thumbnail} alt={video.title} />
+            </a>
+            <Card.Body className="d-flex flex-column">
+              <Card.Title className="fs-6 fw-bold text-dark mb-2">
+                {video.title}
+              </Card.Title>
+              <Card.Text className="text-muted small mb-3">
+                {new Date(video.publishedAt).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
               </Card.Text>
-            </div>
-          </Card.Body>
-        </Card>
+              <a
+                href={video.videoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-outline-warning text-dark mt-auto fw-bold btn-sm"
+              >
+                Watch on YouTube
+              </a>
+            </Card.Body>
+          </Card>
+        </Col>
       ))}
-    </>
+    </Row>
   );
-};
-
-export default SermonCardsList;
-
-/*
-const MessageCard = () => {
-  const sermonName = "Academy And Benefits In Christ";
-  const speakerName = "Pastor Bernard Jean-Mary";
-  const date = "07/26"
-
-  const videoYT = (
-    <iframe
-      width="696"
-      height="391"
-      src="https://www.youtube.com/embed/Ra927pjrz64"
-      title={sermonName}
-      frameBorder={0}
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      referrerPolicy="strict-origin-when-cross-origin"
-      allowFullscreen
-    ></iframe>
-  );
-
-
-  return (
-    <>
-      <Card className="mb-5" style={{ width: "18rem" }}>
-        <Ratio aspectRatio="16x9">
-          {videoYT}
-        </Ratio>
-
-        <Card.Body className="text-white">
-          <Card.Title>{sermonName}</Card.Title>
-
-          <div className="d-flex justify-content-between align-items-center">
-            <Card.Text className="mb-0">{speakerName}</Card.Text>
-            <span>|</span>
-            <Card.Text className="mb-0">{date}</Card.Text>
-          </div>
-        </Card.Body>
-      </Card>
-    </>
-  );
-};
-
-
-export default MessageCard;
-*/
+}
