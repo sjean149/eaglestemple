@@ -1,84 +1,58 @@
-import { useEffect, useState } from "react";
-import Card from "react-bootstrap/Card";
+import { Row, Col, Card } from "react-bootstrap";
 
-const SermonCardsList = () => {
-  const [videos, setVideos] = useState([]);
+interface Video {
+  id: string;
+  title: string;
+  description: string;
+  publishedAt: string;
+  thumbnail: string;
+  videoUrl: string;
+}
 
+interface SermonCardsListProps {
+  videos: Video[];
+}
 
-
-  const API_KEY = "AIzaSyBpRSSilNcn8xzX4lqLT61UCfn_rcFWIXo";
-  const CHANNEL_ID = "UCpYxcXAYhtXBoatthM2hnHg";
-
-  useEffect(() => {
-    async function getVideos() {
-      try {
-        // Get the uploads playlist ID
-        const channelRes = await fetch(
-          `https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${CHANNEL_ID}&key=${API_KEY}`
-        );
-
-        const channelData = await channelRes.json();
-
-        const uploadsPlaylistId =
-          channelData.items[0].contentDetails.relatedPlaylists.uploads;
-
-        // Fetch the uploaded videos
-        const videosRes = await fetch(
-          `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsPlaylistId}&maxResults=50&key=${API_KEY}`
-        );
-
-        const videosData = await videosRes.json();
-
-        console.log(videosData);
-
-        setVideos(videosData.items);
-      } catch (err) {
-        console.error(err);
-      }
-    }
-
-    getVideos();
-  }, []);
-
- 
+export default function SermonCardsList({ videos }: SermonCardsListProps) {
+  if (videos.length === 0) {
+    return (
+      <Col className="text-center py-5">
+        <p className="fs-5 text-muted">No sermons found matching your criteria.</p>
+      </Col>
+    );
+  }
 
   return (
-    <>
-      {videos.map((video) => {
-        const text = video.snippet.title;
-        const 
-        
-        match = text.match(/"([^"]*)"\s+(.+?)\s+\d{1,2}\/\d{1,2}\/\d{2,4}/,);
-
-        const sermonTitle = match?.[1] || "";
-        const speaker = match?.[2] || "";
-
-        return (
-          <Card
-            key={video.snippet.resourceId.videoId}
-            className="mb-5"
-            style={{ width: "18rem" }}
-          >
-            <Card.Img variant="top" src={video.snippet.thumbnails.high?.url} />
-
-            <Card.Body className="text-white">
-              <Card.Title>{sermonTitle}</Card.Title>
-
-              <div className="d-flex justify-content-between align-items-center">
-                <Card.Text className="mb-0">{speaker}</Card.Text>
-
-                <span>|</span>
-
-                <Card.Text className="mb-0">
-                  {new Date(video.snippet.publishedAt).toLocaleDateString()}
-                </Card.Text>
-              </div>
+    <Row className="g-4">
+      {videos.map((video) => (
+        <Col key={video.id} md={6} lg={4}>
+          <Card className="h-100 shadow-sm border-0">
+            <a href={video.videoUrl} target="_blank" rel="noopener noreferrer">
+              <Card.Img variant="top" src={video.thumbnail} alt={video.title} />
+            </a>
+            <Card.Body className="d-flex flex-column">
+              <Card.Title className="fs-6 fw-bold text-dark mb-2">
+                {video.title}
+              </Card.Title>
+              <Card.Text className="text-muted small mb-3">
+                {new Date(video.publishedAt).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </Card.Text>
+              <a
+                href={video.videoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-outline-warning text-dark mt-auto fw-bold btn-sm"
+              >
+                Watch on YouTube
+              </a>
             </Card.Body>
           </Card>
-        );
-      })}
-    </>
+        </Col>
+      ))}
+    </Row>
   );
-};
-
-export default SermonCardsList;
+}
