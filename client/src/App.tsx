@@ -35,18 +35,16 @@ function App() {
                 <HeroSection />
                 <LastMessenger />
                 <First_Section />
-              
               </>
             }
           />
-
           {/* Existing pages */}
           <Route path="/giving" element={<Giving />} />
           <Route path="/sermons" element={<Sermons />} />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/location" element={<LocationMap />} /> {/* <-- Dedicated route for /location */}
-
+          <Route path="/location" element={<LocationMap />} />{" "}
+          {/* <-- Dedicated route for /location */}
           {/* Inner sub-pages */}
           <Route path="/original-sin" element={<OriginalSin />} />
           <Route path="/water-baptism" element={<WaterBaptism />} />
@@ -55,7 +53,8 @@ function App() {
           <Route path="/rapture" element={<Rapture />} />
           <Route path="/godhead" element={<Godhead />} />
           <Route path="/spoken-word" element={<SpokenWord />} />
-          <Route path = "WatchSermon" element={<WatchSermons />} />
+          
+          {/* <Route path="WatchSermon" element={<WatchSermons />} /> */}
         </Routes>
       </main>
 

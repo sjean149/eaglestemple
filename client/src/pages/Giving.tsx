@@ -1,6 +1,7 @@
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import EagleTemple4 from "../components/images/eaglestemple4.png";
 import "./Giving.css";
+import ZeffyEmbed from "../components/ZeffyGive";
 
 export default function Giving() {
   return (
@@ -83,8 +84,7 @@ export default function Giving() {
           </p>
 
           <Button
-            href="https://pushpay.com/g/trinitymiami"
-            target="_blank"
+            href="https://www.zeffy.com/en-US/donation-form/tithes-and-offering-62"
             className="mt-5 px-5 py-3"
             style={{
               background: "#fbbf24",
@@ -96,6 +96,7 @@ export default function Giving() {
           >
             Give Online
           </Button>
+          
         </Container>
       </section>
 
@@ -108,12 +109,12 @@ export default function Giving() {
         }}
       >
         <Container>
+          
           <div className="text-center mb-5">
             <span
               style={{
                 color: "#fbbf24",
                 letterSpacing: "3px",
-                textTransform: "uppercase",
               }}
             >
               Why We Give
@@ -129,65 +130,10 @@ export default function Giving() {
               Giving Changes Lives
             </h2>
           </div>
-
-          <Row className="g-4">
-            <Col lg={4}>
-              <Card
-                className="h-100 text-center"
-                style={{
-                  background: "#111827",
-                  color: "#fff",
-                  border: "1px solid rgba(251,191,36,.2)",
-                  padding: "40px 30px",
-                }}
-              >
-                <h3 style={{ color: "#fbbf24" }}>Serve</h3>
-
-                <p>
-                  Your generosity allows us to serve families, reach our
-                  community, and meet practical needs with the love of Christ.
-                </p>
-              </Card>
-            </Col>
-
-            <Col lg={4}>
-              <Card
-                className="h-100 text-center"
-                style={{
-                  background: "#111827",
-                  color: "#fff",
-                  border: "1px solid rgba(251,191,36,.2)",
-                  padding: "40px 30px",
-                }}
-              >
-                <h3 style={{ color: "#fbbf24" }}>Support Ministry</h3>
-
-                <p>
-                  Every offering strengthens worship services, Bible studies,
-                  discipleship, and outreach ministries.
-                </p>
-              </Card>
-            </Col>
-
-            <Col lg={4}>
-              <Card
-                className="h-100 text-center"
-                style={{
-                  background: "#111827",
-                  color: "#fff",
-                  border: "1px solid rgba(251,191,36,.2)",
-                  padding: "40px 30px",
-                }}
-              >
-                <h3 style={{ color: "#fbbf24" }}>Build the Future</h3>
-
-                <p>
-                  Your faithfulness helps invest in children, youth, missions,
-                  and the next generation of believers.
-                </p>
-              </Card>
-            </Col>
+          <Row>
+            <ZeffyEmbed  />
           </Row>
+          
         </Container>
       </section>
 
@@ -210,8 +156,7 @@ export default function Giving() {
               lineHeight: "1.8",
             }}
           >
-            "Each one must give as he has decided in his heart, not reluctantly
-            or under compulsion, for God loves a cheerful giver."
+            "Every man according as he purposeth in his heart, so let him give; not grudgingly, or of necessity: for God loveth a cheerful giver"
           </blockquote>
 
           <p
