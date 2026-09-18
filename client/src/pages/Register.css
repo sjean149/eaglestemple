@@ -1,0 +1,30 @@
+* {
+   
+}
+
+.main {
+    background-color: aliceblue;
+    min-height: 75vh;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+
+section {
+    color:brown;
+    min-width: 50%;
+    background-color: blueviolet;
+    display: flex; 
+    justify-content: center;
+    
+}
+
+h2 {
+    margin: 20px;
+}
+
+.form-group {
+    margin-top: 30px;
+    justify-content: center;
+    
+}

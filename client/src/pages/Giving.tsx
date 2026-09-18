@@ -85,7 +85,7 @@ export default function Giving() {
 
           <Button
             href="https://www.zeffy.com/en-US/donation-form/tithes-and-offering-62"
-            className="mt-5 px-5 py-3"
+            className="mt-5  px-2 py-2"
             style={{
               background: "#fbbf24",
               color: "#000",
@@ -94,9 +94,32 @@ export default function Giving() {
               letterSpacing: "1px",
             }}
           >
-            Give Online
+            <form
+              action="https://www.paypal.com/donate"
+              method="post"
+              target="_top"
+            >
+              <input type="hidden" name="business" value="FP49F5H6TECZA" />
+              <input type="hidden" name="no_recurring" value="0" />
+              <input type="hidden" name="item_name" value="donate or else" />
+              <input type="hidden" name="currency_code" value="USD" />
+              <input
+                type="image"
+                src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"
+                border="0"
+                name="submit"
+                title="PayPal - The safer, easier way to pay online!"
+                alt="Donate with PayPal button"
+              />
+              <img
+                alt=""
+                border="0"
+                src="https://www.paypal.com/en_US/i/scr/pixel.gif"
+                width="1"
+                height="1"
+              />
+            </form>
           </Button>
-          
         </Container>
       </section>
 
@@ -109,7 +132,6 @@ export default function Giving() {
         }}
       >
         <Container>
-          
           <div className="text-center mb-5">
             <span
               style={{
@@ -131,9 +153,8 @@ export default function Giving() {
             </h2>
           </div>
           <Row>
-            <ZeffyEmbed  />
+            <ZeffyEmbed />
           </Row>
-          
         </Container>
       </section>
 
@@ -156,7 +177,8 @@ export default function Giving() {
               lineHeight: "1.8",
             }}
           >
-            "Every man according as he purposeth in his heart, so let him give; not grudgingly, or of necessity: for God loveth a cheerful giver"
+            "Every man according as he purposeth in his heart, so let him give;
+            not grudgingly, or of necessity: for God loveth a cheerful giver"
           </blockquote>
 
           <p
