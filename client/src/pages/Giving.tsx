@@ -153,7 +153,7 @@ export default function Giving() {
             </h2>
           </div>
           <Row>
-            <ZeffyEmbed />
+           
           </Row>
         </Container>
       </section>

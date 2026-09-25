@@ -1,265 +1,187 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Register.css";
 
-export default function Register() {
-    // Stores everything the user enters into the form
-    const [formData, setFormData] = useState({
+const Register = () => {
+  const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    phoneNumber: "",
+  });
+
+  // Updates React state whenever the user types
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormData((previousData) => ({
+      ...previousData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:5000/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          password: formData.password,
+          confirmPassword: formData.confirmPassword,
+          phone: formData.phoneNumber,
+        }),
+      });
+
+      const data = await response.json();
+
+      // Backend validation error
+      if (!response.ok) {
+        alert(data.message);
+        return;
+      }
+
+      // Successful registration
+      alert(data.message);
+
+      // Clear the form
+      setFormData({
         name: "",
         email: "",
         password: "",
-        confirmPassword: ""
-    });
+        confirmPassword: "",
+        phoneNumber: "",
+      });
 
-    // Stores validation errors
-    const [errors, setErrors] = useState({});
+      // Go to login page
+      navigate("/login");
+    } catch (error) {
+      console.error("Registration error:", error);
 
-    // Updates the appropriate form field whenever the user types
-    const handleChange = (e) => {
-        const { name, value } = e.target;
+      alert("Unable to connect to the server.");
+    }
+  };
 
-        setFormData({
-            ...formData,
-            [name]: value
-        });
-    };
+  return (
+    <div className="register-page">
+      // Eagle GIF background 
+      <iframe
+        src="https://giphy.com/embed/QWGuOFoq82eGx34Zhd"
+        className="register-background"
+        frameBorder="0"
+        allowFullScreen
+        title="Eagle background"
+      ></iframe>
 
-    // Checks whether the form contains valid information
-    const validateForm = () => {
-        const newErrors = {};
+      {/* Dark overlay */}
+      <div className="register-overlay"></div>
 
-        // -------------------------
-        // NAME VALIDATION
-        // -------------------------
-        if (formData.name.trim().length < 2) {
-            newErrors.name =
-                "Name must be at least 2 characters.";
-        }
+      {/* Registration card */}
+      <div className="register-card">
+        <h1>Create Account</h1>
 
-        // -------------------------
-        // EMAIL VALIDATION
-        // -------------------------
-        const emailPattern =
-            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        <p className="register-subtitle">Create your Eagles Temple account</p>
 
-        if (!emailPattern.test(formData.email)) {
-            newErrors.email =
-                "Please enter a valid email address.";
-        }
+        <form onSubmit={handleSubmit}>
+          {/* Name */}
+          <div className="form-entry">
+            <label htmlFor="name">Name</label>
 
-        // -------------------------
-        // PASSWORD VALIDATION
-        // -------------------------
+            <input
+              type="text"
+              name="name"
+              id="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              minLength="2"
+              placeholder="Enter your name"
+            />
+          </div>
 
-        if (formData.password.length < 4) {
-            newErrors.password =
-                "Password must be at least 4 characters.";
-        }
+          {/* Email */}
+          <div className="form-entry">
+            <label htmlFor="email">Email</label>
 
-        // Password must contain a symbol
-        const symbolPattern = /[^A-Za-z0-9]/;
+            <input
+              type="email"
+              name="email"
+              id="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              placeholder="Enter your email"
+            />
+          </div>
 
-        if (!symbolPattern.test(formData.password)) {
-            newErrors.password =
-                "Password must contain at least one symbol.";
-        }
+          {/* Password */}
+          <div className="form-entry">
+            <label htmlFor="password">Password</label>
 
-        // -------------------------
-        // CONFIRM PASSWORD
-        // -------------------------
+            <input
+              type="password"
+              name="password"
+              id="password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+              minLength="4"
+              placeholder="Enter your password"
+            />
+          </div>
 
-        if (
-            formData.password !==
-            formData.confirmPassword
-        ) {
-            newErrors.confirmPassword =
-                "Passwords do not match.";
-        }
+          {/* Confirm Password */}
+          <div className="form-entry">
+            <label htmlFor="confirmPassword">Confirm Password</label>
 
-        return newErrors;
-    };
+            <input
+              type="password"
+              name="confirmPassword"
+              id="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              required
+              placeholder="Re-enter your password"
+            />
+          </div>
 
-    // Runs when the user submits the form
-    const handleSubmit = (e) => {
-        e.preventDefault();
+          {/* Phone */}
+          <div className="form-entry">
+            <label htmlFor="phoneNumber">
+              Phone Number <span>(optional)</span>
+            </label>
 
-        const validationErrors = validateForm();
+            <input
+              type="tel"
+              name="phoneNumber"
+              id="phoneNumber"
+              value={formData.phoneNumber}
+              onChange={handleChange}
+              placeholder="305-555-1234"
+            />
+          </div>
 
-        // Store any validation errors
-        setErrors(validationErrors);
+          {/* Submit */}
+          <button type="submit">Create Account</button>
+        </form>
 
-        // If there are errors, stop here
-        if (Object.keys(validationErrors).length > 0) {
-            return;
-        }
+        <p className="login-link">
+          Already have an account?{" "}
+          <button type="button" onClick={() => navigate("/login")}>
+            Log in
+          </button>
+        </p>
+      </div>
+    </div>
+  );
+};
 
-        // Eventually this is where we will
-        // send the data to our backend API
-        console.log("Registration successful!");
-        console.log(formData);
-    };
-
-    return (
-        <div className="register-page">
-
-            <main className="register-container">
-
-                <div className="register-card">
-
-                    <div className="register-header">
-                        <h1>Create an Account</h1>
-
-                        <p>
-                            Sign up to get started.
-                        </p>
-                    </div>
-
-                    <form onSubmit={handleSubmit}>
-
-                        {/* NAME */}
-                        <div className="form-entry">
-
-                            <label htmlFor="name">
-                                Name
-                            </label>
-
-                            <input
-                                id="name"
-                                type="text"
-                                name="name"
-                                value={formData.name}
-                                onChange={handleChange}
-                                className={
-                                    errors.name
-                                        ? "input-error"
-                                        : ""
-                                }
-                                placeholder="Enter your name"
-                            />
-
-                            {errors.name && (
-                                <p className="error-message">
-                                    {errors.name}
-                                </p>
-                            )}
-
-                        </div>
-
-                        {/* EMAIL */}
-                        <div className="form-entry">
-
-                            <label htmlFor="email">
-                                Email
-                            </label>
-
-                            <input
-                                id="email"
-                                type="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                className={
-                                    errors.email
-                                        ? "input-error"
-                                        : ""
-                                }
-                                placeholder="Enter your email"
-                            />
-
-                            {errors.email && (
-                                <p className="error-message">
-                                    {errors.email}
-                                </p>
-                            )}
-
-                        </div>
-
-                        {/* PASSWORD */}
-                        <div className="form-entry">
-
-                            <label htmlFor="password">
-                                Password
-                            </label>
-
-                            <input
-                                id="password"
-                                type="password"
-                                name="password"
-                                value={formData.password}
-                                onChange={handleChange}
-                                className={
-                                    errors.password
-                                        ? "input-error"
-                                        : ""
-                                }
-                                placeholder="Enter your password"
-                            />
-
-                            <small className="password-help">
-                                Minimum 4 characters and at least
-                                one symbol.
-                            </small>
-
-                            {errors.password && (
-                                <p className="error-message">
-                                    {errors.password}
-                                </p>
-                            )}
-
-                        </div>
-
-                        {/* CONFIRM PASSWORD */}
-                        <div className="form-entry">
-
-                            <label htmlFor="confirmPassword">
-                                Confirm Password
-                            </label>
-
-                            <input
-                                id="confirmPassword"
-                                type="password"
-                                name="confirmPassword"
-                                value={formData.confirmPassword}
-                                onChange={handleChange}
-                                className={
-                                    errors.confirmPassword
-                                        ? "input-error"
-                                        : ""
-                                }
-                                placeholder="Confirm your password"
-                            />
-
-                            {errors.confirmPassword && (
-                                <p className="error-message">
-                                    ⚠ {errors.confirmPassword}
-                                </p>
-                            )}
-
-                        </div>
-
-                        {/* SUBMIT BUTTON */}
-                        <button
-                            type="submit"
-                            className="register-button"
-                        >
-                            Create Account
-                        </button>
-
-                    </form>
-
-                    {/* LOGIN LINK */}
-                    <div className="login-section">
-                        <p>
-                            Already have an account?{" "}
-                            <a href="/login">
-                                Log In
-                            </a>
-                        </p>
-                    </div>
-
-                </div>
-
-            </main>
-
-        </div>
-    );
-}
+export default Register;

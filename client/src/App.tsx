@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Giving from "./pages/Giving";
 import Sermons from "./pages/SearchSermons";
 import About from "./pages/About";
+import Register from "./pages/Register";
 import Login from "./pages/Login";
 import NavBar from "./components/NavBar";
 import HeroSection from "./components/HeroSection";
@@ -44,6 +45,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
           <Route path="/location" element={<LocationMap />} />{" "}
+          <Route path="/register" element={<Register  />} />
           {/* <-- Dedicated route for /location */}
           {/* Inner sub-pages */}
           <Route path="/original-sin" element={<OriginalSin />} />
