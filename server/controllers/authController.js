@@ -25,10 +25,16 @@ const registerUser = async (req, res) => {
     // NAME VALIDATION
     // -----------------------------
 
+    //no numbers regex
+    const namePattern = /^[^\d]*$/;
     if (name.trim().length < 3) {
       return res.status(400).json({
         message: "Name must be at least 3 characters."
       });
+    } else if (!namePattern.test(name)){
+      return res.status(400).json({
+        message: "Name cannot contain numbers."
+      })
     }
 
     // -----------------------------
@@ -46,8 +52,7 @@ const registerUser = async (req, res) => {
     // -----------------------------
     // PHONE VALIDATION
     // Phone is optional
-    // -----------------------------
-
+    
     const phoneRegex =
       /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/;
 
@@ -61,24 +66,24 @@ const registerUser = async (req, res) => {
     // PASSWORD VALIDATION
     // -----------------------------
 
-    if (password.length < 4) {
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
+
+    if (password.length < 8) {
       return res.status(400).json({
-        message: "Password must be at least 4 characters."
+        message: "Password must be at least 8 characters.",
       });
     }
 
-    const symbolPattern = /[^A-Za-z0-9]/;
-
-    if (!symbolPattern.test(password)) {
+    if (!passwordPattern.test(password)) {
       return res.status(400).json({
-        message: "Password must contain at least one symbol."
+        message:
+          "Password must contain at least one uppercase letter, one lowercase letter, and one number.",
       });
     }
 
     // -----------------------------
     // CONFIRM PASSWORD
     // -----------------------------
-
     if (password !== confirmPassword) {
       return res.status(400).json({
         message: "Passwords do not match."

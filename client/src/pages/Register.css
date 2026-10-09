@@ -11,20 +11,6 @@
   overflow: hidden;
 }
 
-/* Eagle GIF */
-.register-background {
-  position: absolute;
-  inset: 0;
-
-  width: 100%;
-  height: 100%;
-
-  border: none;
-
-  z-index: 0;
-  pointer-events: none;
-}
-
 /* Darkens the GIF so the form stands out */
 .register-page::after {
   content: "";
@@ -102,3 +88,21 @@
   cursor: pointer;
 }
 
+.googleSignIn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 15px;
+}
+
+.or-divider {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+#google-button {
+  display: flex;
+  justify-content: center;
+}

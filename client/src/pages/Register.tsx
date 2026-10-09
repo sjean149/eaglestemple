@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Register.css";
+import GoogleSignIn from "../components/GoogleSignIn.jsx";
+
 
 const Register = () => {
-  const navigate = useNavigate();
+const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -23,6 +25,7 @@ const Register = () => {
     }));
   };
 
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -72,18 +75,6 @@ const Register = () => {
 
   return (
     <div className="register-page">
-      // Eagle GIF background 
-      <iframe
-        src="https://giphy.com/embed/QWGuOFoq82eGx34Zhd"
-        className="register-background"
-        frameBorder="0"
-        allowFullScreen
-        title="Eagle background"
-      ></iframe>
-
-      {/* Dark overlay */}
-      <div className="register-overlay"></div>
-
       {/* Registration card */}
       <div className="register-card">
         <h1>Create Account</h1>
@@ -173,6 +164,10 @@ const Register = () => {
           <button type="submit">Create Account</button>
         </form>
 
+        {/* Google Sign-In */}
+        <GoogleSignIn  />
+
+        {/* Login link */}
         <p className="login-link">
           Already have an account?{" "}
           <button type="button" onClick={() => navigate("/login")}>
