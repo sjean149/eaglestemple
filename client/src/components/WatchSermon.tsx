@@ -1,5 +1,4 @@
 import { Container, Row, Col, Button } from "react-bootstrap";
-import NavBar from "../components/NavBar";
 import SermonCardList from "./SermonCardsList";
 import "./WatchSermon.css";
 
@@ -70,7 +69,7 @@ export default function WatchSermons() {
           {/* Leave room for SermonCardList.tsx */}
           <Col lg={12}>
             <div className="sermon-card-list">
-              <SermonCardList />
+              <SermonCardList videos={[]} />
               
             </div>
           </Col>

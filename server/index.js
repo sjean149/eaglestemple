@@ -5,7 +5,15 @@ require("dotenv").config();
 
 const authRoutes = require("./routes/authRoutes.js");
 const app = express();
-app.use(cors());
+
+// CLIENT_URL can be one origin or a comma-separated list
+// (e.g. the Render static site URL plus http://localhost:5173).
+const allowedOrigins = (process.env.CLIENT_URL || "http://localhost:5173")
+  .split(",")
+  .map((origin) => origin.trim().replace(/\/$/, ""))
+  .filter(Boolean);
+
+app.use(cors({ origin: allowedOrigins }));
 app.use(express.json());
 
 // Routes
@@ -15,7 +23,12 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 
 app.get("/", (req, res) => {
-  res.json;
+  res.json({ status: "ok", service: "eagles-temple-api" });
+});
+
+// Render pings this to check the service is up.
+app.get("/healthz", (req, res) => {
+  res.json({ status: "ok" });
 });
 
 const PORT = process.env.PORT || 5000;

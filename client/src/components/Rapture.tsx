@@ -1,11 +1,8 @@
 import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
 import "../styles/SermonSeries.css";
 
 // Image imports
-import raptureImg1 from "./images/eaglestemple2.png";
-import raptureImg2 from "./images/eaglestemple3.png";
 import raptureBg from "./images/rapture.jpg";
 
 interface QAItem {
@@ -17,7 +14,6 @@ interface QAItem {
 }
 
 export default function Rapture() {
-  const navigate = useNavigate();
   const [activeHoverId, setActiveHoverId] = useState<number | null>(null);
 
   const rapturePairs: QAItem[] = [

@@ -1,7 +1,6 @@
-import { Container, Row, Col, Button, Card } from "react-bootstrap";
+import { Container, Row, Button } from "react-bootstrap";
 import EagleTemple4 from "../components/images/eaglestemple4.png";
 import "./Giving.css";
-import ZeffyEmbed from "../components/ZeffyGive";
 
 export default function Giving() {
   return (
@@ -106,14 +105,14 @@ export default function Giving() {
               <input
                 type="image"
                 src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"
-                border="0"
+                style={{ border: 0 }}
                 name="submit"
                 title="PayPal - The safer, easier way to pay online!"
                 alt="Donate with PayPal button"
               />
               <img
                 alt=""
-                border="0"
+                style={{ border: 0 }}
                 src="https://www.paypal.com/en_US/i/scr/pixel.gif"
                 width="1"
                 height="1"

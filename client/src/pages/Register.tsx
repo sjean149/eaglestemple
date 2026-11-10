@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Register.css";
-import GoogleSignIn from "../components/GoogleSignIn.jsx";
+import GoogleSignIn from "../components/GoogleSignIn";
+import { API_URL } from "../config";
 
 
 const Register = () => {
@@ -16,7 +17,7 @@ const navigate = useNavigate();
   });
 
   // Updates React state whenever the user types
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
 
     setFormData((previousData) => ({
@@ -26,11 +27,11 @@ const navigate = useNavigate();
   };
 
   
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/register", {
+      const response = await fetch(`${API_URL}/api/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -93,7 +94,7 @@ const navigate = useNavigate();
               value={formData.name}
               onChange={handleChange}
               required
-              minLength="2"
+              minLength={2}
               placeholder="Enter your name"
             />
           </div>
@@ -124,7 +125,7 @@ const navigate = useNavigate();
               value={formData.password}
               onChange={handleChange}
               required
-              minLength="4"
+              minLength={4}
               placeholder="Enter your password"
             />
           </div>

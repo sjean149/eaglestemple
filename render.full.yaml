@@ -1,0 +1,59 @@
+# FULL Render Blueprint (database + API + site). Not active yet.
+# When the backend is ready, rename this file to render.yaml (replacing the frontend-only one).
+# In the Render dashboard: New > Blueprint, pick this repo and branch.
+# Values marked "sync: false" are prompted for when the Blueprint is created.
+
+databases:
+  - name: eaglestemple-db
+    plan: free
+    databaseName: eaglestemple
+    user: eaglestemple
+
+services:
+  # Express API
+  - type: web
+    name: eaglestemple-api
+    runtime: node
+    plan: free
+    rootDir: server
+    buildCommand: npm ci
+    # Creates/updates tables (idempotent) before starting the server.
+    startCommand: npm run db:init && npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: eaglestemple-db
+          property: connectionString # internal URL, no SSL needed
+      - key: DATABASE_SSL
+        value: "false"
+      - key: JWT_SECRET
+        generateValue: true
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: CLIENT_URL # e.g. https://eaglestemple-site.onrender.com
+        sync: false
+
+  # React (Vite) frontend
+  - type: web
+    name: eaglestemple-site
+    runtime: static
+    rootDir: client
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    # Send every path to index.html so React Router routes work on refresh.
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: VITE_API_URL # e.g. https://eaglestemple-api.onrender.com
+        sync: false
+      - key: VITE_YOUTUBE_API_KEY
+        sync: false
+      - key: VITE_GOOGLE_CLIENT_ID
+        sync: false

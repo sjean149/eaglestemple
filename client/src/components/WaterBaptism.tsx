@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import waterGif from "./images/water.gif";
 
 export default function WaterBaptism() {

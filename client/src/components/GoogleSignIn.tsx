@@ -1,7 +1,13 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { API_URL } from "../config";
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+declare global { interface Window { google?: any } }
+
 const GOOGLE_CLIENT_ID =
+  import.meta.env.VITE_GOOGLE_CLIENT_ID ??
   "513128025737-dkg36uq5u8vj773qvjb1hl9q0r005ne3.apps.googleusercontent.com";
 
 const GoogleSignIn = () => {
@@ -25,14 +31,14 @@ const GoogleSignIn = () => {
       window.google.accounts.id.initialize({
         client_id: GOOGLE_CLIENT_ID,
 
-        callback: async (response) => {
+        callback: async (response: { credential: string }) => {
           try {
             console.log("Google response:", response);
 
             const googleToken = response.credential;
 
             const res = await fetch(
-              "http://localhost:5000/api/auth/google",
+              `${API_URL}/api/auth/google`,
               {
                 method: "POST",
                 headers: {

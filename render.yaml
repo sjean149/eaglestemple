@@ -1,0 +1,27 @@
+# Render Blueprint for Eagles Temple: FRONTEND ONLY for now.
+# The full setup (database + API + site) is in render.full.yaml.
+# In the Render dashboard: New > Blueprint, pick this repo and branch.
+
+services:
+  # React (Vite) frontend
+  - type: web
+    name: eaglestemple-site
+    runtime: static
+    rootDir: client
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    # Send every path to index.html so React Router routes work on refresh.
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: VITE_YOUTUBE_API_KEY
+        sync: false
+      # Add these once the API is deployed:
+      # - key: VITE_API_URL
+      #   sync: false
+      # - key: VITE_GOOGLE_CLIENT_ID
+      #   sync: false

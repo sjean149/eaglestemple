@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Home from "./pages/Home";
 import Giving from "./pages/Giving";
 import Sermons from "./pages/SearchSermons";
 import About from "./pages/About";
@@ -10,7 +9,6 @@ import NavBar from "./components/NavBar";
 import HeroSection from "./components/HeroSection";
 import LastMessenger from "./components/LastMessenger";
 import First_Section from "./components/First_Section";
-import SermonSeries from "./components/SermonSeries";
 import LocationMap from "./components/LocationMap"; // <-- Imported LocationMap component
 import OriginalSin from "./components/OriginalSin";
 import WaterBaptism from "./components/WaterBaptism";

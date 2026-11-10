@@ -1,4 +1,3 @@
-import React from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import './About.css'; // Removed the self-import line that caused the crash
 
